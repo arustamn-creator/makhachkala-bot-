@@ -11,7 +11,8 @@ from telebot.types import (
 )
 
 # ========== НАСТРОЙКИ ==========
-TOKEN = "8777850515:AAGMJddFOFXDoIP_QKyuQmFhzHIdi657sY4"
+import os
+TOKEN = os.environ.get("8777850515:AAGMJddFOFXDoIP_QKyuQmFhzHIdi657sY4")
 MINI_APP_URL = "https://project-d7s9l.vercel.app"
 ADMIN_ID = 5715605642
 
