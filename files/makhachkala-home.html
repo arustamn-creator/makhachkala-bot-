@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Всё для дома — Махачкала</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d0a0b;--bg2:#130d0f;--bg3:#1c1318;--card:#18100f;
+  --border:rgba(200,169,81,0.12);--accent:#8B1A2A;--accent2:#C8A951;
+  --accent3:#A82030;--text:#f5f0f0;--muted:#8a7070;--green:#22c55e;
+  --red-glow:rgba(139,26,42,0.28);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+.screen{display:none;flex-direction:column;min-height:100vh;}
+.screen.active{display:flex;}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:100;background:rgba(13,10,10,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 16px 12px;}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.logo{display:flex;align-items:center;gap:8px;}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 14px var(--red-glow);}
+.logo-text{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:800;line-height:1.15;}
+.logo-text span{color:var(--accent);}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--accent);cursor:pointer;font-weight:500;}
+.header-actions{display:flex;gap:8px;}
+.icon-btn{width:34px;height:34px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;}
+.icon-btn:active{transform:scale(0.93);}
+.search-bar{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:9px 14px;}
+.search-bar input{background:none;border:none;outline:none;color:var(--text);font-family:'Geologica',sans-serif;font-size:14px;flex:1;caret-color:var(--accent);}
+.search-bar input::placeholder{color:var(--muted);}
+
+/* TABS */
+.tabs{display:flex;gap:6px;padding:12px 16px;overflow-x:auto;scrollbar-width:none;background:var(--bg);}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--muted);transition:all 0.2s;}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px var(--red-glow);}
+
+.content{padding-bottom:90px;flex:1;}
+
+/* HERO */
+.hero{margin:0 16px 20px;background:linear-gradient(135deg,#1a0810 0%,#200d14 50%,#0d0508 100%);border-radius:18px;padding:20px;position:relative;overflow:hidden;border:1px solid rgba(139,26,42,0.2);}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(139,26,42,0.4) 0%,transparent 70%);border-radius:50%;}
+.hero::after{content:'';position:absolute;bottom:-30px;left:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(200,169,81,0.2) 0%,transparent 70%);border-radius:50%;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--green);font-weight:500;margin-bottom:10px;}
+.hero h2{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:800;line-height:1.2;margin-bottom:6px;}
+.hero h2 span{color:var(--accent);}
+.hero p{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+.hero-btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 6px 20px var(--red-glow);}
+.hero-btn:active{transform:scale(0.96);}
+.hero-stats{display:flex;gap:0;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);}
+.hero-stat{flex:1;text-align:center;}
+.hero-stat-n{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:800;color:var(--accent2);}
+.hero-stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
+
+/* SECTION */
+.section{margin-bottom:24px;}
+.section-header{display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-bottom:12px;}
+.section-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;}
+.section-link{font-size:12px;color:var(--accent);font-weight:500;cursor:pointer;}
+
+/* CAT GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 16px;}
+.cat-item{display:flex;flex-direction:column;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 6px;cursor:pointer;transition:all 0.2s;}
+.cat-item:active{transform:scale(0.93);border-color:var(--accent);box-shadow:0 0 12px var(--red-glow);}
+.cat-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.cat-label{font-size:10px;text-align:center;color:var(--muted);font-weight:500;line-height:1.2;}
+
+/* MASTERS SCROLL */
+.masters-scroll{display:flex;gap:12px;padding:0 16px;overflow-x:auto;scrollbar-width:none;}
+.masters-scroll::-webkit-scrollbar{display:none;}
+.master-card-h{flex-shrink:0;width:148px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;cursor:pointer;transition:all 0.2s;}
+.master-card-h:active{transform:scale(0.95);border-color:var(--accent);}
+.master-avatar{width:46px;height:46px;border-radius:14px;font-size:24px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.master-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.master-spec{font-size:11px;color:var(--muted);margin-bottom:8px;}
+.master-rating{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;}
+.star{color:#f59e0b;}
+.master-price{margin-top:6px;font-size:11px;color:var(--accent);font-weight:600;}
+.badge-online{display:inline-block;background:rgba(34,197,94,0.12);color:var(--green);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:600;margin-bottom:6px;}
+
+/* MASTERS LIST */
+.masters-list{display:flex;flex-direction:column;gap:10px;padding:0 16px;}
+.master-row{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;}
+.master-row:active{transform:scale(0.98);border-color:var(--accent);box-shadow:0 0 16px var(--red-glow);}
+.master-row-avatar{width:52px;height:52px;border-radius:14px;font-size:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.master-row-info{flex:1;}
+.master-row-name{font-size:14px;font-weight:600;margin-bottom:2px;}
+.master-row-spec{font-size:12px;color:var(--muted);margin-bottom:5px;}
+.master-row-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.tag-price{font-size:11px;color:var(--accent);font-weight:600;}
+.tag-reviews{font-size:11px;color:var(--muted);}
+.master-row-arrow{color:var(--muted);font-size:18px;}
+
+/* SHOPS */
+.shops-list{display:flex;flex-direction:column;gap:10px;padding:0 16px;}
+.shop-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;}
+.shop-card:active{transform:scale(0.98);border-color:var(--accent);}
+.shop-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.shop-info{flex:1;}
+.shop-name{font-size:14px;font-weight:600;margin-bottom:2px;}
+.shop-desc{font-size:11px;color:var(--muted);margin-bottom:6px;}
+.shop-meta{display:flex;gap:10px;align-items:center;}
+.shop-tag{font-size:10px;color:var(--accent2);background:rgba(255,107,53,0.1);border-radius:5px;padding:2px 7px;font-weight:500;}
+.shop-open{font-size:10px;color:var(--green);font-weight:500;}
+.shop-arrow{color:var(--muted);font-size:16px;}
+
+/* DELIVERY */
+.delivery-full-list{display:flex;flex-direction:column;gap:12px;padding:0 16px;}
+.delivery-row{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;}
+.delivery-row-top{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.delivery-row-icon{font-size:34px;}
+.delivery-row-info{flex:1;}
+.delivery-row-name{font-size:15px;font-weight:700;margin-bottom:2px;}
+.delivery-row-desc{font-size:12px;color:var(--muted);}
+.delivery-row-price{font-size:16px;font-weight:800;color:var(--accent2);}
+.delivery-features{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.feat-tag{font-size:10px;color:var(--muted);background:var(--bg3);border-radius:6px;padding:3px 8px;}
+.order-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px var(--red-glow);}
+.order-btn:active{transform:scale(0.97);}
+
+/* PROMO */
+.promo-scroll{display:flex;gap:10px;padding:0 16px;overflow-x:auto;scrollbar-width:none;}
+.promo-scroll::-webkit-scrollbar{display:none;}
+.promo-card{flex-shrink:0;width:220px;border-radius:16px;padding:16px;position:relative;overflow:hidden;cursor:pointer;}
+.promo-card.red{background:linear-gradient(135deg,#5C1020,#8B1A2A);}
+.promo-card.orange{background:linear-gradient(135deg,#7A5010,#C8A951);}
+.promo-card.dark{background:linear-gradient(135deg,#1a0810,#3d1528);}
+.promo-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;margin-bottom:4px;}
+.promo-desc{font-size:12px;opacity:0.85;}
+.promo-emoji{position:absolute;right:12px;top:10px;font-size:32px;opacity:0.35;}
+
+/* MASTER DETAIL */
+.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(232,34,26,0.15);}
+.detail-avatar{width:74px;height:74px;border-radius:20px;font-size:38px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+.detail-name{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;}
+.detail-spec{font-size:14px;color:var(--muted);margin-bottom:12px;}
+.detail-stats{display:flex;gap:0;justify-content:center;padding-top:12px;border-top:1px solid var(--border);}
+.detail-stat{flex:1;text-align:center;}
+.detail-stat-n{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;color:var(--accent2);}
+.detail-stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.detail-section{margin:0 16px 16px;}
+.detail-section-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;font-weight:600;}
+.skills-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.skill-tag{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:500;}
+.review-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;}
+.review-author{font-size:13px;font-weight:600;margin-bottom:4px;}
+.review-text{font-size:12px;color:var(--muted);line-height:1.5;}
+.review-date{font-size:10px;color:var(--muted);margin-top:6px;}
+.call-btn{margin:0 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:14px;padding:15px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Unbounded',sans-serif;box-shadow:0 6px 24px var(--red-glow);}
+.call-btn:active{transform:scale(0.97);}
+
+/* SHOP DETAIL */
+.shop-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;border:1px solid rgba(232,34,26,0.12);}
+.shop-detail-icon{font-size:48px;margin-bottom:10px;}
+.shop-detail-name{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:800;margin-bottom:4px;}
+.shop-detail-desc{font-size:13px;color:var(--muted);margin-bottom:12px;}
+.shop-info-row{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:8px;}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;cursor:pointer;transition:all 0.2s;}
+.product-card:active{transform:scale(0.96);border-color:var(--accent);}
+.product-icon{font-size:28px;margin-bottom:8px;}
+.product-name{font-size:12px;font-weight:600;margin-bottom:3px;}
+.product-price{font-size:13px;font-weight:700;color:var(--accent);}
+
+/* PROFILE */
+.profile-card{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid var(--border);}
+.profile-avatar{width:72px;height:72px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:20px;font-size:36px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 6px 20px var(--red-glow);}
+.profile-name{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;margin-bottom:4px;}
+.profile-phone{font-size:13px;color:var(--muted);}
+.profile-menu{margin:0 16px;}
+.menu-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:8px;transition:all 0.2s;}
+.menu-item:active{transform:scale(0.98);border-color:var(--accent);}
+.menu-icon{font-size:20px;}
+.menu-text{flex:1;font-size:14px;font-weight:500;}
+.menu-arrow{color:var(--muted);font-size:18px;}
+
+/* FILTER */
+.filter-bar{display:flex;gap:8px;padding:0 16px 14px;overflow-x:auto;scrollbar-width:none;background:var(--bg);}
+.filter-bar::-webkit-scrollbar{display:none;}
+.filter-chip{flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--muted);transition:all 0.2s;}
+.filter-chip.active{background:rgba(232,34,26,0.15);border-color:var(--accent);color:var(--accent);}
+
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(13,10,10,0.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;padding:8px 0 env(safe-area-inset-bottom,8px);z-index:100;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;cursor:pointer;transition:all 0.2s;}
+.nav-item:active{transform:scale(0.91);}
+.nav-icon{font-size:20px;}
+.nav-label{font-size:9px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.5px;}
+.nav-item.active .nav-label{color:var(--accent);}
+.nav-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;margin-top:2px;box-shadow:0 0 6px var(--accent);}
+
+.fab{position:fixed;bottom:80px;right:16px;width:52px;height:52px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 28px var(--red-glow);cursor:pointer;z-index:50;}
+.fab:active{transform:scale(0.92);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:flex-end;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 20px 40px;width:100%;border-top:1px solid rgba(232,34,26,0.2);}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px;}
+.modal-title{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:800;margin-bottom:16px;text-align:center;}
+.modal-input{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'Geologica',sans-serif;width:100%;outline:none;margin-bottom:10px;caret-color:var(--accent);}
+.modal-input::placeholder{color:var(--muted);}
+.modal-textarea{height:80px;resize:none;}
+.modal-submit{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:14px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Unbounded',sans-serif;box-shadow:0 6px 20px var(--red-glow);}
+.modal-submit:active{transform:scale(0.97);}
+.modal-close{text-align:center;margin-top:14px;color:var(--muted);font-size:14px;cursor:pointer;}
+
+/* SUCCESS */
+.success-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;align-items:center;justify-content:center;}
+.success-overlay.open{display:flex;}
+.success-box{background:var(--bg2);border-radius:24px;padding:32px 24px;text-align:center;border:1px solid rgba(34,197,94,0.2);margin:20px;}
+.success-icon{font-size:56px;margin-bottom:16px;}
+.success-title{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;}
+.success-text{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;}
+.success-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div class="screen active" id="screen-home">
+  <div class="header">
+    <div class="header-top">
+      <div class="logo">
+        <div class="logo-icon">🏠</div>
+        <div><div class="logo-text">Всё для дома<br><span>Махачкала</span></div></div>
+      </div>
+      <div class="header-actions">
+        <div class="icon-btn">🔔</div>
+        <div class="icon-btn" onclick="navTo('screen-profile','nav-profile')">👤</div>
+      </div>
+    </div>
+    <div class="search-bar"><span>🔍</span><input type="text" placeholder="Найти мастера, магазин, услугу..."></div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="navTo('screen-home','nav-home')">Главная</div>
+    <div class="tab" onclick="navTo('screen-masters','nav-masters')">Мастера</div>
+    <div class="tab" onclick="navTo('screen-shops','nav-shops')">Магазины</div>
+    <div class="tab" onclick="navTo('screen-delivery','nav-delivery')">Доставка</div>
+  </div>
+  <div class="content">
+    <div class="hero">
+      <div class="hero-badge"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;"></span> 247 мастеров онлайн</div>
+      <h2>Найди мастера<br><span>за 2 минуты</span></h2>
+      <p>Сантехники, электрики, отделочники и другие специалисты Махачкалы</p>
+      <div class="hero-btn" onclick="navTo('screen-masters','nav-masters')">⚡ Найти мастера</div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">247</div><div class="hero-stat-l">мастеров</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">38</div><div class="hero-stat-l">магазинов</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">4.8★</div><div class="hero-stat-l">рейтинг</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">1 200+</div><div class="hero-stat-l">заявок</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-title">Категории</div><div class="section-link" onclick="navTo('screen-masters','nav-masters')">Все →</div></div>
+      <div class="cat-grid">
+        <div class="cat-item" onclick="gotoMasters('Сантехники')"><div class="cat-icon" style="background:rgba(59,130,246,0.12)">🔧</div><div class="cat-label">Сантехники</div></div>
+        <div class="cat-item" onclick="gotoMasters('Электрики')"><div class="cat-icon" style="background:rgba(245,158,11,0.12)">⚡</div><div class="cat-label">Электрики</div></div>
+        <div class="cat-item" onclick="gotoMasters('Отделочники')"><div class="cat-icon" style="background:rgba(232,34,26,0.12)">🪣</div><div class="cat-label">Отделочники</div></div>
+        <div class="cat-item" onclick="gotoMasters('Плиточники')"><div class="cat-icon" style="background:rgba(139,92,246,0.12)">🪚</div><div class="cat-label">Плиточники</div></div>
+        <div class="cat-item" onclick="gotoMasters('Сварщики')"><div class="cat-icon" style="background:rgba(255,107,53,0.12)">🔥</div><div class="cat-label">Сварщики</div></div>
+        <div class="cat-item" onclick="gotoMasters('Мебельщики')"><div class="cat-icon" style="background:rgba(20,184,166,0.12)">🛋️</div><div class="cat-label">Мебельщики</div></div>
+        <div class="cat-item" onclick="gotoMasters('Маляры')"><div class="cat-icon" style="background:rgba(232,34,26,0.12)">🎨</div><div class="cat-label">Маляры</div></div>
+        <div class="cat-item" onclick="gotoMasters('Окна')"><div class="cat-icon" style="background:rgba(34,197,94,0.12)">🪟</div><div class="cat-label">Окна/Двери</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-title">Акции</div></div>
+      <div class="promo-scroll">
+        <div class="promo-card red"><div class="promo-emoji">🎁</div><div class="promo-title">−20% на электрику</div><div class="promo-desc">До конца недели</div></div>
+        <div class="promo-card orange"><div class="promo-emoji">🚚</div><div class="promo-title">Бесплатная доставка</div><div class="promo-desc">От заказа 5 000 ₽</div></div>
+        <div class="promo-card dark"><div class="promo-emoji">⭐</div><div class="promo-title">Первый вызов</div><div class="promo-desc">Скидка новым клиентам</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-title">Топ мастеров</div><div class="section-link" onclick="navTo('screen-masters','nav-masters')">Все →</div></div>
+      <div class="masters-scroll">
+        <div class="master-card-h" onclick="openMaster(0)"><div class="master-avatar" style="background:rgba(59,130,246,0.12)">👨‍🔧</div><div class="badge-online">Онлайн</div><div class="master-name">Магомед А.</div><div class="master-spec">Сантехник</div><div class="master-rating"><span class="star">⭐</span> 4.9 (128)</div><div class="master-price">от 800 ₽/час</div></div>
+        <div class="master-card-h" onclick="openMaster(1)"><div class="master-avatar" style="background:rgba(245,158,11,0.12)">👷</div><div class="badge-online">Онлайн</div><div class="master-name">Расул К.</div><div class="master-spec">Электрик</div><div class="master-rating"><span class="star">⭐</span> 4.8 (94)</div><div class="master-price">от 1 000 ₽/час</div></div>
+        <div class="master-card-h" onclick="openMaster(2)"><div class="master-avatar" style="background:rgba(232,34,26,0.12)">🧑‍🏭</div><div class="badge-online">Онлайн</div><div class="master-name">Ибрагим М.</div><div class="master-spec">Отделочник</div><div class="master-rating"><span class="star">⭐</span> 5.0 (67)</div><div class="master-price">от 600 ₽/м²</div></div>
+        <div class="master-card-h" onclick="openMaster(3)"><div class="master-avatar" style="background:rgba(139,92,246,0.12)">🧑‍🔧</div><div class="master-name">Алибек Ш.</div><div class="master-spec">Плиточник</div><div class="master-rating"><span class="star">⭐</span> 4.7 (53)</div><div class="master-price">от 700 ₽/м²</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-title">Магазины</div><div class="section-link" onclick="navTo('screen-shops','nav-shops')">Все →</div></div>
+      <div class="shops-list">
+        <div class="shop-card" onclick="openShop(0)"><div class="shop-icon" style="background:rgba(232,34,26,0.12)">🧱</div><div class="shop-info"><div class="shop-name">СтройМаркет Дагестан</div><div class="shop-desc">Кирпич, цемент, арматура, блоки</div><div class="shop-meta"><div class="shop-tag">Стройматериалы</div><div class="shop-open">● Открыт</div></div></div><div class="shop-arrow">›</div></div>
+        <div class="shop-card" onclick="openShop(1)"><div class="shop-icon" style="background:rgba(59,130,246,0.12)">🪟</div><div class="shop-info"><div class="shop-name">Мир Плитки</div><div class="shop-desc">Керамика, керамогранит, мозаика</div><div class="shop-meta"><div class="shop-tag">Плитка</div><div class="shop-open">● Открыт</div></div></div><div class="shop-arrow">›</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="fab" onclick="openModal()">➕</div>
+</div>
+
+<!-- MASTERS -->
+<div class="screen" id="screen-masters">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мастера</div>
+      <div style="width:60px;"></div>
+    </div>
+    <div class="search-bar"><span>🔍</span><input type="text" placeholder="Поиск мастера..."></div>
+  </div>
+  <div class="filter-bar">
+    <div class="filter-chip active" onclick="filterMasters('Все',this)">Все</div>
+    <div class="filter-chip" onclick="filterMasters('Сантехники',this)">🔧 Сантехники</div>
+    <div class="filter-chip" onclick="filterMasters('Электрики',this)">⚡ Электрики</div>
+    <div class="filter-chip" onclick="filterMasters('Отделочники',this)">🪣 Отделочники</div>
+    <div class="filter-chip" onclick="filterMasters('Плиточники',this)">🪚 Плиточники</div>
+    <div class="filter-chip" onclick="filterMasters('Сварщики',this)">🔥 Сварщики</div>
+    <div class="filter-chip" onclick="filterMasters('Маляры',this)">🎨 Маляры</div>
+    <div class="filter-chip" onclick="filterMasters('Мебельщики',this)">🛋️ Мебельщики</div>
+  </div>
+  <div class="content"><div class="masters-list" id="masters-list"></div></div>
+</div>
+
+<!-- MASTER DETAIL -->
+<div class="screen" id="screen-master-detail">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Профиль мастера</div>
+      <div style="width:60px;"></div>
+    </div>
+  </div>
+  <div class="content" id="master-detail-content"></div>
+</div>
+
+<!-- SHOPS -->
+<div class="screen" id="screen-shops">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Магазины</div>
+      <div style="width:60px;"></div>
+    </div>
+    <div class="search-bar"><span>🔍</span><input type="text" placeholder="Поиск магазина..."></div>
+  </div>
+  <div class="filter-bar">
+    <div class="filter-chip active">Все</div>
+    <div class="filter-chip">🧱 Стройматериалы</div>
+    <div class="filter-chip">🪟 Плитка</div>
+    <div class="filter-chip">🔌 Электрика</div>
+    <div class="filter-chip">🛁 Сантехника</div>
+    <div class="filter-chip">🎨 Краски</div>
+  </div>
+  <div class="content">
+    <div class="shops-list">
+      <div class="shop-card" onclick="openShop(0)"><div class="shop-icon" style="background:rgba(232,34,26,0.12)">🧱</div><div class="shop-info"><div class="shop-name">СтройМаркет Дагестан</div><div class="shop-desc">Кирпич, цемент, арматура, блоки, пескоблоки</div><div class="shop-meta"><div class="shop-tag">Стройматериалы</div><div class="shop-open">● до 20:00</div></div></div><div class="shop-arrow">›</div></div>
+      <div class="shop-card" onclick="openShop(1)"><div class="shop-icon" style="background:rgba(59,130,246,0.12)">🪟</div><div class="shop-info"><div class="shop-name">Мир Плитки</div><div class="shop-desc">Керамика, керамогранит, мозаика, затирка</div><div class="shop-meta"><div class="shop-tag">Плитка</div><div class="shop-open">● до 19:00</div></div></div><div class="shop-arrow">›</div></div>
+      <div class="shop-card" onclick="openShop(2)"><div class="shop-icon" style="background:rgba(34,197,94,0.12)">🔌</div><div class="shop-info"><div class="shop-name">ЭлектроДом</div><div class="shop-desc">Кабель, розетки, освещение, щиты, автоматы</div><div class="shop-meta"><div class="shop-tag">Электрика</div><div class="shop-open">● до 18:00</div></div></div><div class="shop-arrow">›</div></div>
+      <div class="shop-card" onclick="openShop(3)"><div class="shop-icon" style="background:rgba(245,158,11,0.12)">🛁</div><div class="shop-info"><div class="shop-name">АкваЛюкс</div><div class="shop-desc">Сантехника, ванны, унитазы, трубы, фитинги</div><div class="shop-meta"><div class="shop-tag">Сантехника</div><div class="shop-open">● до 19:00</div></div></div><div class="shop-arrow">›</div></div>
+      <div class="shop-card" onclick="openShop(4)"><div class="shop-icon" style="background:rgba(139,92,246,0.12)">🎨</div><div class="shop-info"><div class="shop-name">КрасоТА</div><div class="shop-desc">Краски, грунтовки, шпатлёвки, лаки</div><div class="shop-meta"><div class="shop-tag">Краски</div><div class="shop-open">● до 18:00</div></div></div><div class="shop-arrow">›</div></div>
+      <div class="shop-card" onclick="openShop(5)"><div class="shop-icon" style="background:rgba(20,184,166,0.12)">🪵</div><div class="shop-info"><div class="shop-name">ДеревоДом</div><div class="shop-desc">Доски, брус, фанера, OSB, ламинат</div><div class="shop-meta"><div class="shop-tag">Дерево</div><div class="shop-open">● до 17:00</div></div></div><div class="shop-arrow">›</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP DETAIL -->
+<div class="screen" id="screen-shop-detail">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Магазин</div>
+      <div style="width:60px;"></div>
+    </div>
+  </div>
+  <div class="content" id="shop-detail-content"></div>
+</div>
+
+<!-- DELIVERY -->
+<div class="screen" id="screen-delivery">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Доставка</div>
+      <div style="width:60px;"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div style="padding:16px 16px 0;font-size:13px;color:var(--muted);margin-bottom:16px;">Доставка стройматериалов по Махачкале и пригороду</div>
+    <div class="delivery-full-list">
+      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🛵</div><div class="delivery-row-info"><div class="delivery-row-name">Курьер</div><div class="delivery-row-desc">Мелкие грузы, метизы, инструменты</div></div><div class="delivery-row-price">от 150 ₽</div></div><div class="delivery-features"><span class="feat-tag">до 30 кг</span><span class="feat-tag">1-2 часа</span><span class="feat-tag">по городу</span></div><div class="order-btn" onclick="openDeliveryModal('Курьер')">Заказать курьера</div></div>
+      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🚚</div><div class="delivery-row-info"><div class="delivery-row-name">Газель</div><div class="delivery-row-desc">Стройматериалы, мебель, техника</div></div><div class="delivery-row-price">от 500 ₽</div></div><div class="delivery-features"><span class="feat-tag">до 1.5 т</span><span class="feat-tag">2-4 часа</span><span class="feat-tag">+ грузчики</span></div><div class="order-btn" onclick="openDeliveryModal('Газель')">Заказать газель</div></div>
+      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🏗️</div><div class="delivery-row-info"><div class="delivery-row-name">КамАЗ / Зил</div><div class="delivery-row-desc">Блоки, кирпич, щебень, песок</div></div><div class="delivery-row-price">от 2 500 ₽</div></div><div class="delivery-features"><span class="feat-tag">до 10 т</span><span class="feat-tag">сыпучие</span><span class="feat-tag">стройматериалы</span></div><div class="order-btn" onclick="openDeliveryModal('КамАЗ')">Заказать КамАЗ</div></div>
+      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🏠</div><div class="delivery-row-info"><div class="delivery-row-name">Подъём на этаж</div><div class="delivery-row-desc">Подъём материалов до квартиры</div></div><div class="delivery-row-price">от 300 ₽</div></div><div class="delivery-features"><span class="feat-tag">грузчики</span><span class="feat-tag">любой этаж</span><span class="feat-tag">аккуратно</span></div><div class="order-btn" onclick="openDeliveryModal('Подъём')">Заказать подъём</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div class="screen" id="screen-profile">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Профиль</div>
+      <div style="width:60px;"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="profile-card">
+      <div class="profile-avatar">👤</div>
+      <div class="profile-name">Гость</div>
+      <div class="profile-phone">Войдите через Telegram</div>
+      <div style="margin-top:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:10px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px var(--red-glow);">Войти через Telegram</div>
+    </div>
+    <div class="profile-menu">
+      <div class="menu-item"><div class="menu-icon">📋</div><div class="menu-text">Мои заявки</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item"><div class="menu-icon">❤️</div><div class="menu-text">Избранные мастера</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item"><div class="menu-icon">⭐</div><div class="menu-text">Мои отзывы</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item"><div class="menu-icon">🔔</div><div class="menu-text">Уведомления</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item"><div class="menu-icon">🛠️</div><div class="menu-text">Стать мастером</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item"><div class="menu-icon">📞</div><div class="menu-text">Поддержка</div><div class="menu-arrow">›</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item active" id="nav-home" onclick="navTo('screen-home','nav-home')"><div class="nav-icon">🏠</div><div class="nav-label">Главная</div><div class="nav-dot"></div></div>
+  <div class="nav-item" id="nav-masters" onclick="navTo('screen-masters','nav-masters')"><div class="nav-icon">🔧</div><div class="nav-label">Мастера</div></div>
+  <div class="nav-item" id="nav-shops" onclick="navTo('screen-shops','nav-shops')"><div class="nav-icon">🏪</div><div class="nav-label">Магазины</div></div>
+  <div class="nav-item" id="nav-delivery" onclick="navTo('screen-delivery','nav-delivery')"><div class="nav-icon">🚚</div><div class="nav-label">Доставка</div></div>
+  <div class="nav-item" id="nav-profile" onclick="navTo('screen-profile','nav-profile')"><div class="nav-icon">👤</div><div class="nav-label">Профиль</div></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modal-title">Оставить заявку</div>
+    <input class="modal-input" placeholder="Ваше имя">
+    <input class="modal-input" placeholder="Номер телефона" type="tel">
+    <textarea class="modal-input modal-textarea" placeholder="Опишите задачу подробнее..."></textarea>
+    <div class="modal-submit" onclick="submitModal()">Отправить заявку</div>
+    <div class="modal-close" onclick="closeModal()">Отмена</div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="success-overlay" onclick="document.getElementById('success-overlay').classList.remove('open')">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <div class="success-title">Заявка отправлена!</div>
+    <div class="success-text">Мастер свяжется с вами<br>в течение 15 минут</div>
+    <div class="success-btn" onclick="document.getElementById('success-overlay').classList.remove('open')">Отлично!</div>
+  </div>
+</div>
+
+<script>
+const masters=[
+  {name:'Магомед Алиев',spec:'Сантехник',emoji:'👨‍🔧',bg:'rgba(59,130,246,0.12)',rating:'4.9',reviews:128,price:'800 ₽/час',online:true,exp:'8 лет',skills:['Замена труб','Установка счётчиков','Унитазы','Радиаторы','Тёплый пол','Насосы'],rvs:[{a:'Камиль М.',t:'Отличный мастер! Быстро и аккуратно заменил трубы в ванной.',d:'2 дня назад'},{a:'Патимат С.',t:'Приехал вовремя, всё сделал чисто. Рекомендую!',d:'1 неделю назад'}]},
+  {name:'Расул Курбанов',spec:'Электрик',emoji:'👷',bg:'rgba(245,158,11,0.12)',rating:'4.8',reviews:94,price:'1 000 ₽/час',online:true,exp:'10 лет',skills:['Монтаж проводки','Щиты автоматов','Розетки','Освещение','Тёплый пол','Видеонаблюдение'],rvs:[{a:'Заур А.',t:'Профессионал! Сделал разводку электрики в новостройке.',d:'3 дня назад'},{a:'Мадина Г.',t:'Грамотный специалист, объяснил каждый шаг.',d:'5 дней назад'}]},
+  {name:'Ибрагим Магомедов',spec:'Отделочник',emoji:'🧑‍🏭',bg:'rgba(232,34,26,0.12)',rating:'5.0',reviews:67,price:'600 ₽/м²',online:true,exp:'12 лет',skills:['Штукатурка','Шпаклёвка','Покраска','Гипсокартон','Обои','Декоративная штукатурка'],rvs:[{a:'Алина Р.',t:'Сделал потрясающий ремонт! Выше всяких похвал.',d:'1 неделю назад'},{a:'Нариман К.',t:'Пятёрка! Работа выполнена идеально.',d:'2 недели назад'}]},
+  {name:'Алибек Шамилов',spec:'Плиточник',emoji:'🧑‍🔧',bg:'rgba(139,92,246,0.12)',rating:'4.7',reviews:53,price:'700 ₽/м²',online:false,exp:'6 лет',skills:['Укладка плитки','Мозаика','Затирка','Тёплый пол','Фартук на кухне','Душевые'],rvs:[{a:'Шамиль Д.',t:'Красиво уложил плитку в ванной, швы идеально ровные.',d:'4 дня назад'}]},
+  {name:'Гаджи Омаров',spec:'Сварщик',emoji:'🔥',bg:'rgba(255,107,53,0.12)',rating:'4.9',reviews:41,price:'1 200 ₽/час',online:true,exp:'15 лет',skills:['Ворота','Заборы','Перила','Навесы','Металлоконструкции','Каркасы'],rvs:[{a:'Руслан Т.',t:'Сварил ворота и калитку — качество отличное!',d:'1 неделю назад'}]},
+  {name:'Юсуп Абдулаев',spec:'Мебельщик',emoji:'🛋️',bg:'rgba(20,184,166,0.12)',rating:'4.6',reviews:38,price:'900 ₽/час',online:true,exp:'7 лет',skills:['Сборка мебели','Шкафы-купе','Кухни','Ремонт мебели','Встроенная мебель','Корпусная'],rvs:[{a:'Лейла М.',t:'Собрал шкаф-купе очень быстро и аккуратно!',d:'3 дня назад'}]},
+  {name:'Арсен Хасанов',spec:'Маляр',emoji:'🎨',bg:'rgba(232,34,26,0.12)',rating:'4.8',reviews:72,price:'500 ₽/м²',online:false,exp:'9 лет',skills:['Покраска стен','Потолки','Грунтовка','Декоративная покраска','Фасады','Двери'],rvs:[{a:'Бурлият К.',t:'Покрасил весь дом аккуратно, без единого подтёка.',d:'5 дней назад'}]},
+  {name:'Муса Гаджиев',spec:'Окна/Двери',emoji:'🪟',bg:'rgba(34,197,94,0.12)',rating:'4.9',reviews:89,price:'1 500 ₽/услуга',online:true,exp:'11 лет',skills:['Установка окон ПВХ','Регулировка','Уплотнители','Установка дверей','Балконы','Москитные сетки'],rvs:[{a:'Саида А.',t:'Установил три окна — всё ровно, без щелей. Тепло!',d:'2 дня назад'}]}
+];
+const shops=[
+  {name:'СтройМаркет Дагестан',emoji:'🧱',bg:'rgba(232,34,26,0.12)',desc:'Крупнейший строительный магазин Махачкалы',addr:'пр. Акушинского, 12',phone:'+7 (928) 123-45-67',hours:'8:00 – 20:00',products:[{e:'🧱',n:'Кирпич M150',p:'8 ₽/шт'},{e:'🏗️',n:'Цемент M500',p:'450 ₽/50кг'},{e:'⬛',n:'Пескоблок',p:'35 ₽/шт'},{e:'🔩',n:'Арматура 12мм',p:'80 ₽/м'}]},
+  {name:'Мир Плитки',emoji:'🪟',bg:'rgba(59,130,246,0.12)',desc:'Огромный выбор керамики и керамогранита',addr:'ул. Ленина, 45',phone:'+7 (928) 234-56-78',hours:'9:00 – 19:00',products:[{e:'⬜',n:'Керамогранит 60×60',p:'1 200 ₽/м²'},{e:'🔵',n:'Мозаика стеклянная',p:'2 800 ₽/м²'},{e:'🟤',n:'Клей для плитки',p:'380 ₽/25кг'},{e:'🟡',n:'Затирка Ceresit',p:'250 ₽/2кг'}]},
+  {name:'ЭлектроДом',emoji:'🔌',bg:'rgba(34,197,94,0.12)',desc:'Всё для электромонтажа и освещения',addr:'ул. Гагарина, 8',phone:'+7 (928) 345-67-89',hours:'8:00 – 18:00',products:[{e:'🔌',n:'Кабель ВВГ 3×2.5',p:'45 ₽/м'},{e:'💡',n:'Люстра LED',p:'3 500 ₽'},{e:'🔲',n:'Розетка Legrand',p:'280 ₽'},{e:'⚡',n:'Автомат 25А',p:'320 ₽'}]},
+  {name:'АкваЛюкс',emoji:'🛁',bg:'rgba(245,158,11,0.12)',desc:'Сантехника от эконом до премиум класса',addr:'пр. Насрутдинова, 3',phone:'+7 (928) 456-78-90',hours:'9:00 – 19:00',products:[{e:'🚿',n:'Смеситель Grohe',p:'4 200 ₽'},{e:'🛁',n:'Ванна акриловая',p:'18 000 ₽'},{e:'🚽',n:'Унитаз Santek',p:'6 500 ₽'},{e:'🔧',n:'Трубы ПП',p:'55 ₽/м'}]},
+  {name:'КрасоТА',emoji:'🎨',bg:'rgba(139,92,246,0.12)',desc:'Краски, грунтовки, декоративные покрытия',addr:'ул. Советская, 22',phone:'+7 (928) 567-89-01',hours:'8:00 – 18:00',products:[{e:'🎨',n:'Краска Dulux 10л',p:'2 800 ₽'},{e:'🪣',n:'Грунтовка 5л',p:'650 ₽'},{e:'🪟',n:'Шпатлёвка 20кг',p:'550 ₽'},{e:'✨',n:'Декор штукатурка',p:'1 200 ₽/кг'}]},
+  {name:'ДеревоДом',emoji:'🪵',bg:'rgba(20,184,166,0.12)',desc:'Пиломатериалы, ламинат, паркет',addr:'ул. Дахадаева, 18',phone:'+7 (928) 678-90-12',hours:'8:00 – 17:00',products:[{e:'🪵',n:'Доска 25мм',p:'28 000 ₽/м³'},{e:'📦',n:'OSB 9мм',p:'1 100 ₽'},{e:'🏠',n:'Ламинат 32кл',p:'850 ₽/м²'},{e:'🧰',n:'Фанера 12мм',p:'1 400 ₽/лист'}]}
+];
+
+let screenHistory=['screen-home'];
+
+function navTo(screenId,navId){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  screenHistory=[screenId];
+  document.querySelectorAll('.nav-item').forEach(n=>{n.classList.remove('active');const d=n.querySelector('.nav-dot');if(d)d.remove();});
+  if(navId){const el=document.getElementById(navId);if(el){el.classList.add('active');const dot=document.createElement('div');dot.className='nav-dot';el.appendChild(dot);}}
+  window.scrollTo(0,0);
+}
+
+function goBack(){
+  screenHistory.pop();
+  const prev=screenHistory[screenHistory.length-1]||'screen-home';
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(prev).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function gotoMasters(cat){
+  filterMasters(cat,null);
+  navTo('screen-masters','nav-masters');
+}
+
+function renderMasters(list){
+  document.getElementById('masters-list').innerHTML=list.map((m)=>`
+    <div class="master-row" onclick="openMaster(${masters.indexOf(m)})">
+      <div class="master-row-avatar" style="background:${m.bg}">${m.emoji}</div>
+      <div class="master-row-info">
+        ${m.online?'<span class="badge-online">● Онлайн</span>':''}
+        <div class="master-row-name">${m.name}</div>
+        <div class="master-row-spec">${m.spec} • Опыт ${m.exp}</div>
+        <div class="master-row-meta">
+          <span class="star">⭐</span><span style="font-size:12px;font-weight:600;">${m.rating}</span>
+          <span class="tag-reviews">(${m.reviews})</span>
+          <span class="tag-price">${m.price}</span>
+        </div>
+      </div>
+      <div class="master-row-arrow">›</div>
+    </div>`).join('');
+}
+
+function filterMasters(cat,el){
+  if(el){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');}
+  const key=cat.replace(/[^а-яёa-z]/gi,'').toLowerCase().slice(0,-1);const filtered=cat==='Все'?masters:masters.filter(m=>m.spec.toLowerCase().startsWith(key));
+  renderMasters(filtered.length?filtered:masters);
+}
+
+function openMaster(i){
+  const m=masters[i];
+  screenHistory.push('screen-master-detail');
+  document.getElementById('master-detail-content').innerHTML=`
+    <div class="master-detail-hero">
+      <div class="detail-avatar" style="background:${m.bg}">${m.emoji}</div>
+      ${m.online?'<div class="badge-online" style="margin-bottom:8px;">● Онлайн сейчас</div>':''}
+      <div class="detail-name">${m.name}</div>
+      <div class="detail-spec">${m.spec} • Опыт ${m.exp}</div>
+      <div class="detail-stats">
+        <div class="detail-stat"><div class="detail-stat-n">${m.rating}⭐</div><div class="detail-stat-l">Рейтинг</div></div>
+        <div class="detail-stat"><div class="detail-stat-n">${m.reviews}</div><div class="detail-stat-l">Отзывов</div></div>
+        <div class="detail-stat"><div class="detail-stat-n">${m.price}</div><div class="detail-stat-l">Стоимость</div></div>
+      </div>
+    </div>
+    <div class="detail-section"><div class="detail-section-title">Услуги</div><div class="skills-grid">${m.skills.map(s=>`<div class="skill-tag">${s}</div>`).join('')}</div></div>
+    <div class="detail-section"><div class="detail-section-title">Отзывы</div>${m.rvs.map(r=>`<div class="review-card"><div class="review-author">${r.a} <span class="star">⭐⭐⭐⭐⭐</span></div><div class="review-text">${r.t}</div><div class="review-date">${r.d}</div></div>`).join('')}</div>
+    <div class="call-btn" onclick="openMasterModal('${m.name}')">📞 Вызвать мастера</div>
+    <div style="height:24px;"></div>`;
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-master-detail').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openShop(i){
+  const s=shops[i];
+  screenHistory.push('screen-shop-detail');
+  document.getElementById('shop-detail-content').innerHTML=`
+    <div class="shop-detail-hero">
+      <div class="shop-detail-icon">${s.emoji}</div>
+      <div class="shop-detail-name">${s.name}</div>
+      <div class="shop-detail-desc">${s.desc}</div>
+      <div class="shop-info-row"><span>📍</span>${s.addr}</div>
+      <div class="shop-info-row"><span>📞</span>${s.phone}</div>
+      <div class="shop-info-row"><span>🕐</span>${s.hours}</div>
+    </div>
+    <div class="section"><div class="section-header"><div class="section-title">Товары и цены</div></div>
+    <div class="products-grid">${s.products.map(p=>`<div class="product-card"><div class="product-icon">${p.e}</div><div class="product-name">${p.n}</div><div class="product-price">${p.p}</div></div>`).join('')}</div></div>
+    <div style="padding:0 16px 24px;"><div class="order-btn" onclick="openDeliveryModal('${s.name}')">🚚 Заказать доставку из магазина</div></div>`;
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-shop-detail').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openModal(){document.getElementById('modal-title').textContent='Оставить заявку';document.getElementById('modal-overlay').classList.add('open');}
+function openMasterModal(name){document.getElementById('modal-title').textContent='Вызвать: '+name;document.getElementById('modal-overlay').classList.add('open');}
+function openDeliveryModal(type){document.getElementById('modal-title').textContent='Заказать: '+type;document.getElementById('modal-overlay').classList.add('open');}
+function closeModal(e){if(!e||e.target===document.getElementById('modal-overlay'))document.getElementById('modal-overlay').classList.remove('open');}
+function submitModal(){document.getElementById('modal-overlay').classList.remove('open');setTimeout(()=>document.getElementById('success-overlay').classList.add('open'),200);}
+
+renderMasters(masters);
+</script>
+</body>
+</html>
