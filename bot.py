@@ -631,5 +631,5 @@ def callback_handler(call):
 # ЗАПУСК
 # ───────────────────────────────────────────
 if __name__ == "__main__":
-    print("✅ Бот запущен...")
+    print("Бот запущен с токеном: " + str(bool(TOKEN)))
     bot.infinity_polling()
