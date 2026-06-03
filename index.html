@@ -6,7 +6,7 @@
 <title>Всё для дома — Махачкала</title>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg:#0d0a0b;--bg2:#130d0f;--bg3:#1c1318;--card:#18100f;
   --border:rgba(200,169,81,0.12);--accent:#8B1A2A;--accent2:#C8A951;
   --accent3:#A82030;--text:#f5f0f0;--muted:#8a7070;--green:#22c55e;
@@ -14,7 +14,6 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-serif;min-height:100vh;overflow-x:hidden;}
-
 .screen{display:none;flex-direction:column;min-height:100vh;}
 .screen.active{display:flex;}
 
@@ -38,7 +37,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .tabs::-webkit-scrollbar{display:none;}
 .tab{flex-shrink:0;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--muted);transition:all 0.2s;}
 .tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px var(--red-glow);}
-
 .content{padding-bottom:90px;flex:1;}
 
 /* HERO */
@@ -81,6 +79,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .star{color:#f59e0b;}
 .master-price{margin-top:6px;font-size:11px;color:var(--accent);font-weight:600;}
 .badge-online{display:inline-block;background:rgba(34,197,94,0.12);color:var(--green);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:600;margin-bottom:6px;}
+.badge-pro{display:inline-block;background:rgba(200,169,81,0.15);color:var(--accent2);border:1px solid rgba(200,169,81,0.3);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
+.badge-premium{display:inline-block;background:rgba(139,26,42,0.2);color:var(--accent);border:1px solid rgba(139,26,42,0.4);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
 
 /* MASTERS LIST */
 .masters-list{display:flex;flex-direction:column;gap:10px;padding:0 16px;}
@@ -104,7 +104,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .shop-name{font-size:14px;font-weight:600;margin-bottom:2px;}
 .shop-desc{font-size:11px;color:var(--muted);margin-bottom:6px;}
 .shop-meta{display:flex;gap:10px;align-items:center;}
-.shop-tag{font-size:10px;color:var(--accent2);background:rgba(255,107,53,0.1);border-radius:5px;padding:2px 7px;font-weight:500;}
+.shop-tag{font-size:10px;color:var(--accent2);background:rgba(200,169,81,0.1);border-radius:5px;padding:2px 7px;font-weight:500;}
 .shop-open{font-size:10px;color:var(--green);font-weight:500;}
 .shop-arrow{color:var(--muted);font-size:16px;}
 
@@ -134,7 +134,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .promo-emoji{position:absolute;right:12px;top:10px;font-size:32px;opacity:0.35;}
 
 /* MASTER DETAIL */
-.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(232,34,26,0.15);}
+.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(139,26,42,0.15);}
 .detail-avatar{width:74px;height:74px;border-radius:20px;font-size:38px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
 .detail-name{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;}
 .detail-spec{font-size:14px;color:var(--muted);margin-bottom:12px;}
@@ -146,15 +146,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .detail-section-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;font-weight:600;}
 .skills-grid{display:flex;flex-wrap:wrap;gap:8px;}
 .skill-tag{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:500;}
-.review-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;}
-.review-author{font-size:13px;font-weight:600;margin-bottom:4px;}
-.review-text{font-size:12px;color:var(--muted);line-height:1.5;}
-.review-date{font-size:10px;color:var(--muted);margin-top:6px;}
 .call-btn{margin:0 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:14px;padding:15px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Unbounded',sans-serif;box-shadow:0 6px 24px var(--red-glow);}
 .call-btn:active{transform:scale(0.97);}
 
 /* SHOP DETAIL */
-.shop-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;border:1px solid rgba(232,34,26,0.12);}
+.shop-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;border:1px solid rgba(139,26,42,0.12);}
 .shop-detail-icon{font-size:48px;margin-bottom:10px;}
 .shop-detail-name{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:800;margin-bottom:4px;}
 .shop-detail-desc{font-size:13px;color:var(--muted);margin-bottom:12px;}
@@ -177,12 +173,31 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .menu-icon{font-size:20px;}
 .menu-text{flex:1;font-size:14px;font-weight:500;}
 .menu-arrow{color:var(--muted);font-size:18px;}
+.profile-requests{margin:0 16px;}
+.req-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;}
+.req-title{font-size:13px;font-weight:600;margin-bottom:4px;}
+.req-meta{font-size:11px;color:var(--muted);}
+.req-status{display:inline-block;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:6px;}
+.req-status.new{background:rgba(34,197,94,0.12);color:var(--green);}
+.req-status.done{background:rgba(200,169,81,0.12);color:var(--accent2);}
 
 /* FILTER */
 .filter-bar{display:flex;gap:8px;padding:0 16px 14px;overflow-x:auto;scrollbar-width:none;background:var(--bg);}
 .filter-bar::-webkit-scrollbar{display:none;}
 .filter-chip{flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--muted);transition:all 0.2s;}
-.filter-chip.active{background:rgba(232,34,26,0.15);border-color:var(--accent);color:var(--accent);}
+.filter-chip.active{background:rgba(139,26,42,0.15);border-color:var(--accent);color:var(--accent);}
+
+/* SEARCH RESULTS */
+.search-results{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,0.5);max-height:60vh;overflow-y:auto;}
+.search-result-item{padding:12px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;border-bottom:1px solid var(--border);}
+.search-result-item:last-child{border-bottom:none;}
+.search-result-item:active{background:var(--bg3);}
+.search-result-emoji{font-size:24px;width:36px;text-align:center;}
+.search-result-info{flex:1;}
+.search-result-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.search-result-sub{font-size:11px;color:var(--muted);}
+.search-result-section{padding:8px 16px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;background:var(--bg3);font-weight:600;}
+.search-wrap{position:relative;}
 
 /* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(13,10,10,0.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;padding:8px 0 env(safe-area-inset-bottom,8px);z-index:100;}
@@ -192,14 +207,13 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .nav-label{font-size:9px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.5px;}
 .nav-item.active .nav-label{color:var(--accent);}
 .nav-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;margin-top:2px;box-shadow:0 0 6px var(--accent);}
-
 .fab{position:fixed;bottom:80px;right:16px;width:52px;height:52px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 28px var(--red-glow);cursor:pointer;z-index:50;}
 .fab:active{transform:scale(0.92);}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:flex-end;}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 20px 40px;width:100%;border-top:1px solid rgba(232,34,26,0.2);}
+.modal{background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 20px 40px;width:100%;border-top:1px solid rgba(139,26,42,0.2);}
 .modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px;}
 .modal-title{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:800;margin-bottom:16px;text-align:center;}
 .modal-input{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'Geologica',sans-serif;width:100%;outline:none;margin-bottom:10px;caret-color:var(--accent);}
@@ -217,6 +231,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .success-title{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;}
 .success-text{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;}
 .success-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;}
+
+/* LOADER */
+.loader{text-align:center;padding:40px 16px;color:var(--muted);font-size:14px;}
+.spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.empty-state{text-align:center;padding:40px 16px;color:var(--muted);}
+.empty-state-icon{font-size:48px;margin-bottom:12px;}
+.empty-state-text{font-size:14px;}
 </style>
 </head>
 <body>
@@ -234,7 +256,10 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
         <div class="icon-btn" onclick="navTo('screen-profile','nav-profile')">👤</div>
       </div>
     </div>
-    <div class="search-bar"><span>🔍</span><input type="text" placeholder="Найти мастера, магазин, услугу..."></div>
+    <div class="search-wrap">
+      <div class="search-bar"><span>🔍</span><input type="text" id="home-search" placeholder="Найти мастера, магазин, услугу..." oninput="globalSearch(this.value)" autocomplete="off"></div>
+      <div class="search-results" id="home-search-results" style="display:none;"></div>
+    </div>
   </div>
   <div class="tabs">
     <div class="tab active" onclick="navTo('screen-home','nav-home')">Главная</div>
@@ -244,20 +269,20 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   </div>
   <div class="content">
     <div class="hero">
-      <div class="hero-badge"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;"></span> 247 мастеров онлайн</div>
+      <div class="hero-badge"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;"></span> <span id="online-count">...</span> мастеров онлайн</div>
       <h2>Найди мастера<br><span>за 2 минуты</span></h2>
       <p>Сантехники, электрики, отделочники и другие специалисты Махачкалы</p>
       <div class="hero-btn" onclick="navTo('screen-masters','nav-masters')">⚡ Найти мастера</div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-n">247</div><div class="hero-stat-l">мастеров</div></div>
-        <div class="hero-stat"><div class="hero-stat-n">38</div><div class="hero-stat-l">магазинов</div></div>
+        <div class="hero-stat"><div class="hero-stat-n" id="stat-masters">...</div><div class="hero-stat-l">мастеров</div></div>
+        <div class="hero-stat"><div class="hero-stat-n" id="stat-shops">...</div><div class="hero-stat-l">магазинов</div></div>
         <div class="hero-stat"><div class="hero-stat-n">4.8★</div><div class="hero-stat-l">рейтинг</div></div>
-        <div class="hero-stat"><div class="hero-stat-n">1 200+</div><div class="hero-stat-l">заявок</div></div>
+        <div class="hero-stat"><div class="hero-stat-n" id="stat-requests">...</div><div class="hero-stat-l">заявок</div></div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-header"><div class="section-title">Категории</div><div class="section-link" onclick="navTo('screen-masters','nav-masters')">Все →</div></div>
+      <div class="section-header"><div class="section-title">Категории мастеров</div><div class="section-link" onclick="navTo('screen-masters','nav-masters')">Все →</div></div>
       <div class="cat-grid">
         <div class="cat-item" onclick="gotoMasters('Сантехники')"><div class="cat-icon" style="background:rgba(59,130,246,0.12)">🔧</div><div class="cat-label">Сантехники</div></div>
         <div class="cat-item" onclick="gotoMasters('Электрики')"><div class="cat-icon" style="background:rgba(245,158,11,0.12)">⚡</div><div class="cat-label">Электрики</div></div>
@@ -265,8 +290,20 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
         <div class="cat-item" onclick="gotoMasters('Плиточники')"><div class="cat-icon" style="background:rgba(139,92,246,0.12)">🪚</div><div class="cat-label">Плиточники</div></div>
         <div class="cat-item" onclick="gotoMasters('Сварщики')"><div class="cat-icon" style="background:rgba(255,107,53,0.12)">🔥</div><div class="cat-label">Сварщики</div></div>
         <div class="cat-item" onclick="gotoMasters('Мебельщики')"><div class="cat-icon" style="background:rgba(20,184,166,0.12)">🛋️</div><div class="cat-label">Мебельщики</div></div>
-        <div class="cat-item" onclick="gotoMasters('Маляры')"><div class="cat-icon" style="background:rgba(232,34,26,0.12)">🎨</div><div class="cat-label">Маляры</div></div>
-        <div class="cat-item" onclick="gotoMasters('Окна')"><div class="cat-icon" style="background:rgba(34,197,94,0.12)">🪟</div><div class="cat-label">Окна/Двери</div></div>
+        <div class="cat-item" onclick="gotoMasters('Маляры')"><div class="cat-icon" style="background:rgba(200,169,81,0.12)">🎨</div><div class="cat-label">Маляры</div></div>
+        <div class="cat-item" onclick="gotoMasters('Окна/Двери')"><div class="cat-icon" style="background:rgba(34,197,94,0.12)">🪟</div><div class="cat-label">Окна/Двери</div></div>
+        <div class="cat-item" onclick="gotoMasters('Кровельщики')"><div class="cat-icon" style="background:rgba(239,68,68,0.12)">🏠</div><div class="cat-label">Кровельщики</div></div>
+        <div class="cat-item" onclick="gotoMasters('Каменщики')"><div class="cat-icon" style="background:rgba(180,83,9,0.12)">🧱</div><div class="cat-label">Каменщики</div></div>
+        <div class="cat-item" onclick="gotoMasters('Потолки')"><div class="cat-icon" style="background:rgba(124,58,237,0.12)">✨</div><div class="cat-label">Потолки</div></div>
+        <div class="cat-item" onclick="gotoMasters('Камень')"><div class="cat-icon" style="background:rgba(168,157,122,0.12)">💎</div><div class="cat-label">Нат. камень</div></div>
+        <div class="cat-item" onclick="gotoMasters('Гипсокартон')"><div class="cat-icon" style="background:rgba(16,185,129,0.12)">🔨</div><div class="cat-label">Гипсокартон</div></div>
+        <div class="cat-item" onclick="gotoMasters('Кондиционеры')"><div class="cat-icon" style="background:rgba(14,165,233,0.12)">❄️</div><div class="cat-label">Кондиционеры</div></div>
+        <div class="cat-item" onclick="gotoMasters('Видеонаблюдение')"><div class="cat-icon" style="background:rgba(239,68,68,0.12)">📹</div><div class="cat-label">Видеонадзор</div></div>
+        <div class="cat-item" onclick="gotoMasters('Плотники')"><div class="cat-icon" style="background:rgba(217,119,6,0.12)">🪚</div><div class="cat-label">Плотники</div></div>
+        <div class="cat-item" onclick="gotoMasters('Ландшафт')"><div class="cat-icon" style="background:rgba(5,150,105,0.12)">🌿</div><div class="cat-label">Ландшафт</div></div>
+        <div class="cat-item" onclick="gotoMasters('Реставрация')"><div class="cat-icon" style="background:rgba(14,116,144,0.12)">🛁</div><div class="cat-label">Реставрация</div></div>
+        <div class="cat-item" onclick="gotoMasters('Замки')"><div class="cat-icon" style="background:rgba(100,116,139,0.12)">🔐</div><div class="cat-label">Замки</div></div>
+        <div class="cat-item" onclick="gotoMasters('Сборка IKEA')"><div class="cat-icon" style="background:rgba(255,196,0,0.12)">🪑</div><div class="cat-label">Сборка IKEA</div></div>
       </div>
     </div>
 
@@ -275,26 +312,18 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
       <div class="promo-scroll">
         <div class="promo-card red"><div class="promo-emoji">🎁</div><div class="promo-title">−20% на электрику</div><div class="promo-desc">До конца недели</div></div>
         <div class="promo-card orange"><div class="promo-emoji">🚚</div><div class="promo-title">Бесплатная доставка</div><div class="promo-desc">От заказа 5 000 ₽</div></div>
-        <div class="promo-card dark"><div class="promo-emoji">⭐</div><div class="promo-title">Первый вызов</div><div class="promo-desc">Скидка новым клиентам</div></div>
+        <div class="promo-card dark"><div class="promo-emoji">💎</div><div class="promo-title">Камень со скидкой</div><div class="promo-desc">Ракушечник −15%</div></div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-header"><div class="section-title">Топ мастеров</div><div class="section-link" onclick="navTo('screen-masters','nav-masters')">Все →</div></div>
-      <div class="masters-scroll">
-        <div class="master-card-h" onclick="openMaster(0)"><div class="master-avatar" style="background:rgba(59,130,246,0.12)">👨‍🔧</div><div class="badge-online">Онлайн</div><div class="master-name">Магомед А.</div><div class="master-spec">Сантехник</div><div class="master-rating"><span class="star">⭐</span> 4.9 (128)</div><div class="master-price">от 800 ₽/час</div></div>
-        <div class="master-card-h" onclick="openMaster(1)"><div class="master-avatar" style="background:rgba(245,158,11,0.12)">👷</div><div class="badge-online">Онлайн</div><div class="master-name">Расул К.</div><div class="master-spec">Электрик</div><div class="master-rating"><span class="star">⭐</span> 4.8 (94)</div><div class="master-price">от 1 000 ₽/час</div></div>
-        <div class="master-card-h" onclick="openMaster(2)"><div class="master-avatar" style="background:rgba(232,34,26,0.12)">🧑‍🏭</div><div class="badge-online">Онлайн</div><div class="master-name">Ибрагим М.</div><div class="master-spec">Отделочник</div><div class="master-rating"><span class="star">⭐</span> 5.0 (67)</div><div class="master-price">от 600 ₽/м²</div></div>
-        <div class="master-card-h" onclick="openMaster(3)"><div class="master-avatar" style="background:rgba(139,92,246,0.12)">🧑‍🔧</div><div class="master-name">Алибек Ш.</div><div class="master-spec">Плиточник</div><div class="master-rating"><span class="star">⭐</span> 4.7 (53)</div><div class="master-price">от 700 ₽/м²</div></div>
-      </div>
+      <div class="masters-scroll" id="home-top-masters"><div class="loader"><div class="spinner"></div></div></div>
     </div>
 
     <div class="section">
       <div class="section-header"><div class="section-title">Магазины</div><div class="section-link" onclick="navTo('screen-shops','nav-shops')">Все →</div></div>
-      <div class="shops-list">
-        <div class="shop-card" onclick="openShop(0)"><div class="shop-icon" style="background:rgba(232,34,26,0.12)">🧱</div><div class="shop-info"><div class="shop-name">СтройМаркет Дагестан</div><div class="shop-desc">Кирпич, цемент, арматура, блоки</div><div class="shop-meta"><div class="shop-tag">Стройматериалы</div><div class="shop-open">● Открыт</div></div></div><div class="shop-arrow">›</div></div>
-        <div class="shop-card" onclick="openShop(1)"><div class="shop-icon" style="background:rgba(59,130,246,0.12)">🪟</div><div class="shop-info"><div class="shop-name">Мир Плитки</div><div class="shop-desc">Керамика, керамогранит, мозаика</div><div class="shop-meta"><div class="shop-tag">Плитка</div><div class="shop-open">● Открыт</div></div></div><div class="shop-arrow">›</div></div>
-      </div>
+      <div class="shops-list" id="home-shops"><div class="loader"><div class="spinner"></div></div></div>
     </div>
   </div>
   <div class="fab" onclick="openModal()">➕</div>
@@ -308,9 +337,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
       <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мастера</div>
       <div style="width:60px;"></div>
     </div>
-    <div class="search-bar"><span>🔍</span><input type="text" placeholder="Поиск мастера..."></div>
+    <div class="search-wrap">
+      <div class="search-bar"><span>🔍</span><input type="text" id="masters-search" placeholder="Поиск мастера..." oninput="searchMasters(this.value)" autocomplete="off"></div>
+    </div>
   </div>
-  <div class="filter-bar">
+  <div class="filter-bar" id="masters-filter-bar">
     <div class="filter-chip active" onclick="filterMasters('Все',this)">Все</div>
     <div class="filter-chip" onclick="filterMasters('Сантехники',this)">🔧 Сантехники</div>
     <div class="filter-chip" onclick="filterMasters('Электрики',this)">⚡ Электрики</div>
@@ -319,8 +350,20 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
     <div class="filter-chip" onclick="filterMasters('Сварщики',this)">🔥 Сварщики</div>
     <div class="filter-chip" onclick="filterMasters('Маляры',this)">🎨 Маляры</div>
     <div class="filter-chip" onclick="filterMasters('Мебельщики',this)">🛋️ Мебельщики</div>
+    <div class="filter-chip" onclick="filterMasters('Кровельщики',this)">🏠 Кровельщики</div>
+    <div class="filter-chip" onclick="filterMasters('Каменщики',this)">🧱 Каменщики</div>
+    <div class="filter-chip" onclick="filterMasters('Потолки',this)">✨ Потолки</div>
+    <div class="filter-chip" onclick="filterMasters('Камень',this)">💎 Нат. камень</div>
+    <div class="filter-chip" onclick="filterMasters('Гипсокартон',this)">🔨 Гипсокартон</div>
+    <div class="filter-chip" onclick="filterMasters('Кондиционеры',this)">❄️ Кондиционеры</div>
+    <div class="filter-chip" onclick="filterMasters('Видеонаблюдение',this)">📹 Видеонадзор</div>
+    <div class="filter-chip" onclick="filterMasters('Плотники',this)">🪚 Плотники</div>
+    <div class="filter-chip" onclick="filterMasters('Ландшафт',this)">🌿 Ландшафт</div>
+    <div class="filter-chip" onclick="filterMasters('Реставрация',this)">🛁 Реставрация</div>
+    <div class="filter-chip" onclick="filterMasters('Замки',this)">🔐 Замки</div>
+    <div class="filter-chip" onclick="filterMasters('Сборка IKEA',this)">🪑 IKEA</div>
   </div>
-  <div class="content"><div class="masters-list" id="masters-list"></div></div>
+  <div class="content"><div class="masters-list" id="masters-list"><div class="loader"><div class="spinner"></div></div></div></div>
 </div>
 
 <!-- MASTER DETAIL -->
@@ -343,26 +386,26 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
       <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Магазины</div>
       <div style="width:60px;"></div>
     </div>
-    <div class="search-bar"><span>🔍</span><input type="text" placeholder="Поиск магазина..."></div>
-  </div>
-  <div class="filter-bar">
-    <div class="filter-chip active">Все</div>
-    <div class="filter-chip">🧱 Стройматериалы</div>
-    <div class="filter-chip">🪟 Плитка</div>
-    <div class="filter-chip">🔌 Электрика</div>
-    <div class="filter-chip">🛁 Сантехника</div>
-    <div class="filter-chip">🎨 Краски</div>
-  </div>
-  <div class="content">
-    <div class="shops-list">
-      <div class="shop-card" onclick="openShop(0)"><div class="shop-icon" style="background:rgba(232,34,26,0.12)">🧱</div><div class="shop-info"><div class="shop-name">СтройМаркет Дагестан</div><div class="shop-desc">Кирпич, цемент, арматура, блоки, пескоблоки</div><div class="shop-meta"><div class="shop-tag">Стройматериалы</div><div class="shop-open">● до 20:00</div></div></div><div class="shop-arrow">›</div></div>
-      <div class="shop-card" onclick="openShop(1)"><div class="shop-icon" style="background:rgba(59,130,246,0.12)">🪟</div><div class="shop-info"><div class="shop-name">Мир Плитки</div><div class="shop-desc">Керамика, керамогранит, мозаика, затирка</div><div class="shop-meta"><div class="shop-tag">Плитка</div><div class="shop-open">● до 19:00</div></div></div><div class="shop-arrow">›</div></div>
-      <div class="shop-card" onclick="openShop(2)"><div class="shop-icon" style="background:rgba(34,197,94,0.12)">🔌</div><div class="shop-info"><div class="shop-name">ЭлектроДом</div><div class="shop-desc">Кабель, розетки, освещение, щиты, автоматы</div><div class="shop-meta"><div class="shop-tag">Электрика</div><div class="shop-open">● до 18:00</div></div></div><div class="shop-arrow">›</div></div>
-      <div class="shop-card" onclick="openShop(3)"><div class="shop-icon" style="background:rgba(245,158,11,0.12)">🛁</div><div class="shop-info"><div class="shop-name">АкваЛюкс</div><div class="shop-desc">Сантехника, ванны, унитазы, трубы, фитинги</div><div class="shop-meta"><div class="shop-tag">Сантехника</div><div class="shop-open">● до 19:00</div></div></div><div class="shop-arrow">›</div></div>
-      <div class="shop-card" onclick="openShop(4)"><div class="shop-icon" style="background:rgba(139,92,246,0.12)">🎨</div><div class="shop-info"><div class="shop-name">КрасоТА</div><div class="shop-desc">Краски, грунтовки, шпатлёвки, лаки</div><div class="shop-meta"><div class="shop-tag">Краски</div><div class="shop-open">● до 18:00</div></div></div><div class="shop-arrow">›</div></div>
-      <div class="shop-card" onclick="openShop(5)"><div class="shop-icon" style="background:rgba(20,184,166,0.12)">🪵</div><div class="shop-info"><div class="shop-name">ДеревоДом</div><div class="shop-desc">Доски, брус, фанера, OSB, ламинат</div><div class="shop-meta"><div class="shop-tag">Дерево</div><div class="shop-open">● до 17:00</div></div></div><div class="shop-arrow">›</div></div>
+    <div class="search-wrap">
+      <div class="search-bar"><span>🔍</span><input type="text" id="shops-search" placeholder="Поиск магазина..." oninput="searchShops(this.value)" autocomplete="off"></div>
     </div>
   </div>
+  <div class="filter-bar" id="shops-filter-bar">
+    <div class="filter-chip active" onclick="filterShops('Все',this)">Все</div>
+    <div class="filter-chip" onclick="filterShops('Стройматериалы',this)">🧱 Стройматериалы</div>
+    <div class="filter-chip" onclick="filterShops('Плитка',this)">🪟 Плитка</div>
+    <div class="filter-chip" onclick="filterShops('Электрика',this)">🔌 Электрика</div>
+    <div class="filter-chip" onclick="filterShops('Сантехника',this)">🛁 Сантехника</div>
+    <div class="filter-chip" onclick="filterShops('Краски',this)">🎨 Краски</div>
+    <div class="filter-chip" onclick="filterShops('Дерево',this)">🪵 Дерево</div>
+    <div class="filter-chip" onclick="filterShops('Природный камень',this)">💎 Камень</div>
+    <div class="filter-chip" onclick="filterShops('Окна и двери',this)">🪟 Окна/Двери</div>
+    <div class="filter-chip" onclick="filterShops('Металл',this)">⚙️ Металл</div>
+    <div class="filter-chip" onclick="filterShops('Утепление',this)">🧊 Утепление</div>
+    <div class="filter-chip" onclick="filterShops('Гипсокартон',this)">📐 Гипсокартон</div>
+    <div class="filter-chip" onclick="filterShops('Двери',this)">🚪 Двери</div>
+  </div>
+  <div class="content"><div class="shops-list" id="shops-list"><div class="loader"><div class="spinner"></div></div></div></div>
 </div>
 
 <!-- SHOP DETAIL -->
@@ -392,7 +435,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
       <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🛵</div><div class="delivery-row-info"><div class="delivery-row-name">Курьер</div><div class="delivery-row-desc">Мелкие грузы, метизы, инструменты</div></div><div class="delivery-row-price">от 150 ₽</div></div><div class="delivery-features"><span class="feat-tag">до 30 кг</span><span class="feat-tag">1-2 часа</span><span class="feat-tag">по городу</span></div><div class="order-btn" onclick="openDeliveryModal('Курьер')">Заказать курьера</div></div>
       <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🚚</div><div class="delivery-row-info"><div class="delivery-row-name">Газель</div><div class="delivery-row-desc">Стройматериалы, мебель, техника</div></div><div class="delivery-row-price">от 500 ₽</div></div><div class="delivery-features"><span class="feat-tag">до 1.5 т</span><span class="feat-tag">2-4 часа</span><span class="feat-tag">+ грузчики</span></div><div class="order-btn" onclick="openDeliveryModal('Газель')">Заказать газель</div></div>
       <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🏗️</div><div class="delivery-row-info"><div class="delivery-row-name">КамАЗ / Зил</div><div class="delivery-row-desc">Блоки, кирпич, щебень, песок</div></div><div class="delivery-row-price">от 2 500 ₽</div></div><div class="delivery-features"><span class="feat-tag">до 10 т</span><span class="feat-tag">сыпучие</span><span class="feat-tag">стройматериалы</span></div><div class="order-btn" onclick="openDeliveryModal('КамАЗ')">Заказать КамАЗ</div></div>
-      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🏠</div><div class="delivery-row-info"><div class="delivery-row-name">Подъём на этаж</div><div class="delivery-row-desc">Подъём материалов до квартиры</div></div><div class="delivery-row-price">от 300 ₽</div></div><div class="delivery-features"><span class="feat-tag">грузчики</span><span class="feat-tag">любой этаж</span><span class="feat-tag">аккуратно</span></div><div class="order-btn" onclick="openDeliveryModal('Подъём')">Заказать подъём</div></div>
+      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🏠</div><div class="delivery-row-info"><div class="delivery-row-name">Подъём на этаж</div><div class="delivery-row-desc">Подъём материалов до квартиры</div></div><div class="delivery-row-price">от 300 ₽</div></div><div class="delivery-features"><span class="feat-tag">грузчики</span><span class="feat-tag">любой этаж</span><span class="feat-tag">аккуратно</span></div><div class="order-btn" onclick="openDeliveryModal('Подъём на этаж')">Заказать подъём</div></div>
+      <div class="delivery-row"><div class="delivery-row-top"><div class="delivery-row-icon">🪨</div><div class="delivery-row-info"><div class="delivery-row-name">Доставка камня</div><div class="delivery-row-desc">Ракушечник, гранит, мрамор — хрупко</div></div><div class="delivery-row-price">от 1 000 ₽</div></div><div class="delivery-features"><span class="feat-tag">упаковка</span><span class="feat-tag">аккуратно</span><span class="feat-tag">любой вес</span></div><div class="order-btn" onclick="openDeliveryModal('Доставка камня')">Заказать доставку камня</div></div>
     </div>
   </div>
 </div>
@@ -407,19 +451,22 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
     </div>
   </div>
   <div class="content">
-    <div class="profile-card">
-      <div class="profile-avatar">👤</div>
-      <div class="profile-name">Гость</div>
-      <div class="profile-phone">Войдите через Telegram</div>
-      <div style="margin-top:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:10px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px var(--red-glow);">Войти через Telegram</div>
+    <div class="profile-card" id="profile-card">
+      <div class="profile-avatar" id="profile-avatar">👤</div>
+      <div class="profile-name" id="profile-name">Загрузка...</div>
+      <div class="profile-phone" id="profile-username"></div>
     </div>
     <div class="profile-menu">
-      <div class="menu-item"><div class="menu-icon">📋</div><div class="menu-text">Мои заявки</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item" onclick="showMyRequests()"><div class="menu-icon">📋</div><div class="menu-text">Мои заявки</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">❤️</div><div class="menu-text">Избранные мастера</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">⭐</div><div class="menu-text">Мои отзывы</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">🔔</div><div class="menu-text">Уведомления</div><div class="menu-arrow">›</div></div>
-      <div class="menu-item"><div class="menu-icon">🛠️</div><div class="menu-text">Стать мастером</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item" onclick="openModal()"><div class="menu-icon">🛠️</div><div class="menu-text">Стать мастером</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">📞</div><div class="menu-text">Поддержка</div><div class="menu-arrow">›</div></div>
+    </div>
+    <div id="my-requests-section" style="display:none;margin-top:8px;">
+      <div style="padding:0 16px 10px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мои заявки</div>
+      <div class="profile-requests" id="my-requests-list"><div class="loader"><div class="spinner"></div></div></div>
     </div>
   </div>
 </div>
@@ -438,9 +485,9 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="modal-title">Оставить заявку</div>
-    <input class="modal-input" placeholder="Ваше имя">
-    <input class="modal-input" placeholder="Номер телефона" type="tel">
-    <textarea class="modal-input modal-textarea" placeholder="Опишите задачу подробнее..."></textarea>
+    <input class="modal-input" id="modal-name" placeholder="Ваше имя">
+    <input class="modal-input" id="modal-phone" placeholder="Номер телефона" type="tel">
+    <textarea class="modal-input modal-textarea" id="modal-desc" placeholder="Опишите задачу подробнее..."></textarea>
     <div class="modal-submit" onclick="submitModal()">Отправить заявку</div>
     <div class="modal-close" onclick="closeModal()">Отмена</div>
   </div>
@@ -457,124 +504,452 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 </div>
 
 <script>
-const masters=[
-  {name:'Магомед Алиев',spec:'Сантехник',emoji:'👨‍🔧',bg:'rgba(59,130,246,0.12)',rating:'4.9',reviews:128,price:'800 ₽/час',online:true,exp:'8 лет',skills:['Замена труб','Установка счётчиков','Унитазы','Радиаторы','Тёплый пол','Насосы'],rvs:[{a:'Камиль М.',t:'Отличный мастер! Быстро и аккуратно заменил трубы в ванной.',d:'2 дня назад'},{a:'Патимат С.',t:'Приехал вовремя, всё сделал чисто. Рекомендую!',d:'1 неделю назад'}]},
-  {name:'Расул Курбанов',spec:'Электрик',emoji:'👷',bg:'rgba(245,158,11,0.12)',rating:'4.8',reviews:94,price:'1 000 ₽/час',online:true,exp:'10 лет',skills:['Монтаж проводки','Щиты автоматов','Розетки','Освещение','Тёплый пол','Видеонаблюдение'],rvs:[{a:'Заур А.',t:'Профессионал! Сделал разводку электрики в новостройке.',d:'3 дня назад'},{a:'Мадина Г.',t:'Грамотный специалист, объяснил каждый шаг.',d:'5 дней назад'}]},
-  {name:'Ибрагим Магомедов',spec:'Отделочник',emoji:'🧑‍🏭',bg:'rgba(232,34,26,0.12)',rating:'5.0',reviews:67,price:'600 ₽/м²',online:true,exp:'12 лет',skills:['Штукатурка','Шпаклёвка','Покраска','Гипсокартон','Обои','Декоративная штукатурка'],rvs:[{a:'Алина Р.',t:'Сделал потрясающий ремонт! Выше всяких похвал.',d:'1 неделю назад'},{a:'Нариман К.',t:'Пятёрка! Работа выполнена идеально.',d:'2 недели назад'}]},
-  {name:'Алибек Шамилов',spec:'Плиточник',emoji:'🧑‍🔧',bg:'rgba(139,92,246,0.12)',rating:'4.7',reviews:53,price:'700 ₽/м²',online:false,exp:'6 лет',skills:['Укладка плитки','Мозаика','Затирка','Тёплый пол','Фартук на кухне','Душевые'],rvs:[{a:'Шамиль Д.',t:'Красиво уложил плитку в ванной, швы идеально ровные.',d:'4 дня назад'}]},
-  {name:'Гаджи Омаров',spec:'Сварщик',emoji:'🔥',bg:'rgba(255,107,53,0.12)',rating:'4.9',reviews:41,price:'1 200 ₽/час',online:true,exp:'15 лет',skills:['Ворота','Заборы','Перила','Навесы','Металлоконструкции','Каркасы'],rvs:[{a:'Руслан Т.',t:'Сварил ворота и калитку — качество отличное!',d:'1 неделю назад'}]},
-  {name:'Юсуп Абдулаев',spec:'Мебельщик',emoji:'🛋️',bg:'rgba(20,184,166,0.12)',rating:'4.6',reviews:38,price:'900 ₽/час',online:true,exp:'7 лет',skills:['Сборка мебели','Шкафы-купе','Кухни','Ремонт мебели','Встроенная мебель','Корпусная'],rvs:[{a:'Лейла М.',t:'Собрал шкаф-купе очень быстро и аккуратно!',d:'3 дня назад'}]},
-  {name:'Арсен Хасанов',spec:'Маляр',emoji:'🎨',bg:'rgba(232,34,26,0.12)',rating:'4.8',reviews:72,price:'500 ₽/м²',online:false,exp:'9 лет',skills:['Покраска стен','Потолки','Грунтовка','Декоративная покраска','Фасады','Двери'],rvs:[{a:'Бурлият К.',t:'Покрасил весь дом аккуратно, без единого подтёка.',d:'5 дней назад'}]},
-  {name:'Муса Гаджиев',spec:'Окна/Двери',emoji:'🪟',bg:'rgba(34,197,94,0.12)',rating:'4.9',reviews:89,price:'1 500 ₽/услуга',online:true,exp:'11 лет',skills:['Установка окон ПВХ','Регулировка','Уплотнители','Установка дверей','Балконы','Москитные сетки'],rvs:[{a:'Саида А.',t:'Установил три окна — всё ровно, без щелей. Тепло!',d:'2 дня назад'}]}
-];
-const shops=[
-  {name:'СтройМаркет Дагестан',emoji:'🧱',bg:'rgba(232,34,26,0.12)',desc:'Крупнейший строительный магазин Махачкалы',addr:'пр. Акушинского, 12',phone:'+7 (928) 123-45-67',hours:'8:00 – 20:00',products:[{e:'🧱',n:'Кирпич M150',p:'8 ₽/шт'},{e:'🏗️',n:'Цемент M500',p:'450 ₽/50кг'},{e:'⬛',n:'Пескоблок',p:'35 ₽/шт'},{e:'🔩',n:'Арматура 12мм',p:'80 ₽/м'}]},
-  {name:'Мир Плитки',emoji:'🪟',bg:'rgba(59,130,246,0.12)',desc:'Огромный выбор керамики и керамогранита',addr:'ул. Ленина, 45',phone:'+7 (928) 234-56-78',hours:'9:00 – 19:00',products:[{e:'⬜',n:'Керамогранит 60×60',p:'1 200 ₽/м²'},{e:'🔵',n:'Мозаика стеклянная',p:'2 800 ₽/м²'},{e:'🟤',n:'Клей для плитки',p:'380 ₽/25кг'},{e:'🟡',n:'Затирка Ceresit',p:'250 ₽/2кг'}]},
-  {name:'ЭлектроДом',emoji:'🔌',bg:'rgba(34,197,94,0.12)',desc:'Всё для электромонтажа и освещения',addr:'ул. Гагарина, 8',phone:'+7 (928) 345-67-89',hours:'8:00 – 18:00',products:[{e:'🔌',n:'Кабель ВВГ 3×2.5',p:'45 ₽/м'},{e:'💡',n:'Люстра LED',p:'3 500 ₽'},{e:'🔲',n:'Розетка Legrand',p:'280 ₽'},{e:'⚡',n:'Автомат 25А',p:'320 ₽'}]},
-  {name:'АкваЛюкс',emoji:'🛁',bg:'rgba(245,158,11,0.12)',desc:'Сантехника от эконом до премиум класса',addr:'пр. Насрутдинова, 3',phone:'+7 (928) 456-78-90',hours:'9:00 – 19:00',products:[{e:'🚿',n:'Смеситель Grohe',p:'4 200 ₽'},{e:'🛁',n:'Ванна акриловая',p:'18 000 ₽'},{e:'🚽',n:'Унитаз Santek',p:'6 500 ₽'},{e:'🔧',n:'Трубы ПП',p:'55 ₽/м'}]},
-  {name:'КрасоТА',emoji:'🎨',bg:'rgba(139,92,246,0.12)',desc:'Краски, грунтовки, декоративные покрытия',addr:'ул. Советская, 22',phone:'+7 (928) 567-89-01',hours:'8:00 – 18:00',products:[{e:'🎨',n:'Краска Dulux 10л',p:'2 800 ₽'},{e:'🪣',n:'Грунтовка 5л',p:'650 ₽'},{e:'🪟',n:'Шпатлёвка 20кг',p:'550 ₽'},{e:'✨',n:'Декор штукатурка',p:'1 200 ₽/кг'}]},
-  {name:'ДеревоДом',emoji:'🪵',bg:'rgba(20,184,166,0.12)',desc:'Пиломатериалы, ламинат, паркет',addr:'ул. Дахадаева, 18',phone:'+7 (928) 678-90-12',hours:'8:00 – 17:00',products:[{e:'🪵',n:'Доска 25мм',p:'28 000 ₽/м³'},{e:'📦',n:'OSB 9мм',p:'1 100 ₽'},{e:'🏠',n:'Ламинат 32кл',p:'850 ₽/м²'},{e:'🧰',n:'Фанера 12мм',p:'1 400 ₽/лист'}]}
-];
+// ── Config ──────────────────────────────────────────────────────────────────
+const API = '';  // same origin; change to 'https://your-backend.railway.app' if separated
 
-let screenHistory=['screen-home'];
+// ── Telegram WebApp ─────────────────────────────────────────────────────────
+const tg = window.Telegram && window.Telegram.WebApp;
+let tgUser = null;
+if (tg) {
+  tg.ready();
+  tg.expand();
+  tgUser = tg.initDataUnsafe && tg.initDataUnsafe.user;
+}
 
-function navTo(screenId,navId){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+// ── State ───────────────────────────────────────────────────────────────────
+let allMasters = [];
+let allShops = [];
+let currentMasterFilter = 'Все';
+let currentShopFilter = 'Все';
+let currentMasterId = null;
+let currentShopId = null;
+let modalMasterId = null;
+let modalShopId = null;
+let modalType = 'master';
+let searchDebounce = null;
+let screenHistory = ['screen-home'];
+
+// ── Navigation ───────────────────────────────────────────────────────────────
+function navTo(screenId, navId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(screenId).classList.add('active');
-  screenHistory=[screenId];
-  document.querySelectorAll('.nav-item').forEach(n=>{n.classList.remove('active');const d=n.querySelector('.nav-dot');if(d)d.remove();});
-  if(navId){const el=document.getElementById(navId);if(el){el.classList.add('active');const dot=document.createElement('div');dot.className='nav-dot';el.appendChild(dot);}}
-  window.scrollTo(0,0);
+  screenHistory = [screenId];
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.remove('active');
+    const d = n.querySelector('.nav-dot');
+    if (d) d.remove();
+  });
+  if (navId) {
+    const el = document.getElementById(navId);
+    if (el) {
+      el.classList.add('active');
+      const dot = document.createElement('div');
+      dot.className = 'nav-dot';
+      el.appendChild(dot);
+    }
+  }
+  window.scrollTo(0, 0);
+
+  if (screenId === 'screen-masters') loadMasters();
+  if (screenId === 'screen-shops') loadShops();
+  if (screenId === 'screen-profile') loadProfile();
+  hideSearchResults();
 }
 
-function goBack(){
+function goBack() {
   screenHistory.pop();
-  const prev=screenHistory[screenHistory.length-1]||'screen-home';
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const prev = screenHistory[screenHistory.length - 1] || 'screen-home';
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(prev).classList.add('active');
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
-function gotoMasters(cat){
-  filterMasters(cat,null);
-  navTo('screen-masters','nav-masters');
+// ── API helpers ──────────────────────────────────────────────────────────────
+async function apiFetch(path) {
+  try {
+    const r = await fetch(API + path);
+    if (!r.ok) throw new Error(r.status);
+    return await r.json();
+  } catch(e) {
+    console.warn('API error', path, e);
+    return null;
+  }
 }
 
-function renderMasters(list){
-  document.getElementById('masters-list').innerHTML=list.map((m)=>`
-    <div class="master-row" onclick="openMaster(${masters.indexOf(m)})">
-      <div class="master-row-avatar" style="background:${m.bg}">${m.emoji}</div>
-      <div class="master-row-info">
-        ${m.online?'<span class="badge-online">● Онлайн</span>':''}
-        <div class="master-row-name">${m.name}</div>
-        <div class="master-row-spec">${m.spec} • Опыт ${m.exp}</div>
-        <div class="master-row-meta">
-          <span class="star">⭐</span><span style="font-size:12px;font-weight:600;">${m.rating}</span>
-          <span class="tag-reviews">(${m.reviews})</span>
-          <span class="tag-price">${m.price}</span>
-        </div>
+async function apiPost(path, body) {
+  try {
+    const r = await fetch(API + path, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+    return await r.json();
+  } catch(e) {
+    console.warn('API post error', path, e);
+    return null;
+  }
+}
+
+// ── Stats ────────────────────────────────────────────────────────────────────
+async function loadStats() {
+  const data = await apiFetch('/api/stats');
+  if (!data) return;
+  document.getElementById('stat-masters').textContent = data.masters;
+  document.getElementById('stat-shops').textContent = data.shops;
+  document.getElementById('stat-requests').textContent = (data.requests + 1200) + '+';
+  document.getElementById('online-count').textContent = data.online;
+}
+
+// ── Masters ──────────────────────────────────────────────────────────────────
+function planBadge(plan) {
+  if (plan === 'premium') return '<span class="badge-premium">PREMIUM</span>';
+  if (plan === 'pro') return '<span class="badge-pro">PRO</span>';
+  return '';
+}
+
+function renderMasterCard(m, idx) {
+  return `<div class="master-card-h" onclick="openMaster(${m.id})">
+    <div class="master-avatar" style="background:${m.bg}">${m.emoji}</div>
+    ${m.online ? '<div class="badge-online">● Онлайн</div>' : ''}
+    <div class="master-name">${m.name}${planBadge(m.plan)}</div>
+    <div class="master-spec">${m.spec}</div>
+    <div class="master-rating"><span class="star">⭐</span> ${m.rating} (${m.reviews})</div>
+    <div class="master-price">от ${m.price} ${m.price_unit}</div>
+  </div>`;
+}
+
+function renderMasterRow(m) {
+  return `<div class="master-row" onclick="openMaster(${m.id})">
+    <div class="master-row-avatar" style="background:${m.bg}">${m.emoji}</div>
+    <div class="master-row-info">
+      ${m.online ? '<span class="badge-online">● Онлайн</span>' : ''}
+      <div class="master-row-name">${m.name}${planBadge(m.plan)}</div>
+      <div class="master-row-spec">${m.spec} • Опыт ${m.experience}</div>
+      <div class="master-row-meta">
+        <span class="star">⭐</span>
+        <span style="font-size:12px;font-weight:600;">${m.rating}</span>
+        <span class="tag-reviews">(${m.reviews})</span>
+        <span class="tag-price">${m.price} ${m.price_unit}</span>
       </div>
-      <div class="master-row-arrow">›</div>
-    </div>`).join('');
+    </div>
+    <div class="master-row-arrow">›</div>
+  </div>`;
 }
 
-function filterMasters(cat,el){
-  if(el){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');}
-  const key=cat.replace(/[^а-яёa-z]/gi,'').toLowerCase().slice(0,-1);const filtered=cat==='Все'?masters:masters.filter(m=>m.spec.toLowerCase().startsWith(key));
-  renderMasters(filtered.length?filtered:masters);
+async function loadMasters(category, q) {
+  const cat = category || currentMasterFilter;
+  let url = '/api/masters?category=' + encodeURIComponent(cat === 'Все' ? '' : cat);
+  if (q) url += '&q=' + encodeURIComponent(q);
+  document.getElementById('masters-list').innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  const data = await apiFetch(url);
+  if (!data) { document.getElementById('masters-list').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div class="empty-state-text">Не удалось загрузить</div></div>'; return; }
+  allMasters = data;
+  renderMastersList();
 }
 
-function openMaster(i){
-  const m=masters[i];
+function renderMastersList() {
+  const el = document.getElementById('masters-list');
+  if (!allMasters.length) {
+    el.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-text">Ничего не найдено</div></div>';
+    return;
+  }
+  el.innerHTML = allMasters.map(renderMasterRow).join('');
+}
+
+async function loadHomeTopMasters() {
+  const data = await apiFetch('/api/masters?category=');
+  if (!data) return;
+  const top = data.slice(0, 6);
+  document.getElementById('home-top-masters').innerHTML = top.map(renderMasterCard).join('');
+}
+
+function filterMasters(cat, el) {
+  currentMasterFilter = cat;
+  if (el) {
+    document.querySelectorAll('#masters-filter-bar .filter-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+  loadMasters(cat, document.getElementById('masters-search').value.trim());
+}
+
+function searchMasters(q) {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => loadMasters(currentMasterFilter, q), 300);
+}
+
+async function openMaster(id) {
+  currentMasterId = id;
   screenHistory.push('screen-master-detail');
-  document.getElementById('master-detail-content').innerHTML=`
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-master-detail').classList.add('active');
+  document.getElementById('master-detail-content').innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  window.scrollTo(0, 0);
+
+  const m = await apiFetch('/api/masters/' + id);
+  if (!m) { document.getElementById('master-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div class="empty-state-text">Не удалось загрузить</div></div>'; return; }
+
+  document.getElementById('master-detail-content').innerHTML = `
     <div class="master-detail-hero">
       <div class="detail-avatar" style="background:${m.bg}">${m.emoji}</div>
-      ${m.online?'<div class="badge-online" style="margin-bottom:8px;">● Онлайн сейчас</div>':''}
-      <div class="detail-name">${m.name}</div>
-      <div class="detail-spec">${m.spec} • Опыт ${m.exp}</div>
+      ${m.online ? '<div class="badge-online" style="margin-bottom:8px;">● Онлайн сейчас</div>' : ''}
+      <div class="detail-name">${m.name}${planBadge(m.plan)}</div>
+      <div class="detail-spec">${m.spec} • Опыт ${m.experience}</div>
       <div class="detail-stats">
         <div class="detail-stat"><div class="detail-stat-n">${m.rating}⭐</div><div class="detail-stat-l">Рейтинг</div></div>
         <div class="detail-stat"><div class="detail-stat-n">${m.reviews}</div><div class="detail-stat-l">Отзывов</div></div>
-        <div class="detail-stat"><div class="detail-stat-n">${m.price}</div><div class="detail-stat-l">Стоимость</div></div>
+        <div class="detail-stat"><div class="detail-stat-n">${m.price}</div><div class="detail-stat-l">${m.price_unit}</div></div>
       </div>
     </div>
-    <div class="detail-section"><div class="detail-section-title">Услуги</div><div class="skills-grid">${m.skills.map(s=>`<div class="skill-tag">${s}</div>`).join('')}</div></div>
-    <div class="detail-section"><div class="detail-section-title">Отзывы</div>${m.rvs.map(r=>`<div class="review-card"><div class="review-author">${r.a} <span class="star">⭐⭐⭐⭐⭐</span></div><div class="review-text">${r.t}</div><div class="review-date">${r.d}</div></div>`).join('')}</div>
-    <div class="call-btn" onclick="openMasterModal('${m.name}')">📞 Вызвать мастера</div>
+    ${m.description ? `<div class="detail-section"><div class="detail-section-title">О мастере</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">${m.description}</div></div>` : ''}
+    <div class="detail-section"><div class="detail-section-title">Услуги</div><div class="skills-grid">${(m.skills||[]).map(s => `<div class="skill-tag">${s}</div>`).join('')}</div></div>
+    ${m.phone ? `<div class="detail-section"><div class="detail-section-title">Телефон</div><div style="font-size:15px;font-weight:600;">${m.phone}</div></div>` : ''}
+    <div class="call-btn" onclick="openMasterModal(${m.id},'${m.name.replace(/'/g,"\\'")}')">📞 Вызвать мастера</div>
     <div style="height:24px;"></div>`;
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('screen-master-detail').classList.add('active');
-  window.scrollTo(0,0);
 }
 
-function openShop(i){
-  const s=shops[i];
+function gotoMasters(cat) {
+  currentMasterFilter = cat;
+  navTo('screen-masters', 'nav-masters');
+  document.querySelectorAll('#masters-filter-bar .filter-chip').forEach(c => {
+    c.classList.remove('active');
+    if (c.textContent.includes(cat) || (cat === 'Все' && c.textContent === 'Все')) c.classList.add('active');
+  });
+}
+
+// ── Shops ────────────────────────────────────────────────────────────────────
+function renderShopCard(s) {
+  return `<div class="shop-card" onclick="openShop(${s.id})">
+    <div class="shop-icon" style="background:${s.bg}">${s.emoji}</div>
+    <div class="shop-info">
+      <div class="shop-name">${s.name}${planBadge(s.plan)}</div>
+      <div class="shop-desc">${s.description ? s.description.substring(0,60) + (s.description.length > 60 ? '…' : '') : ''}</div>
+      <div class="shop-meta">
+        <div class="shop-tag">${s.category}</div>
+        <div class="shop-open">● Открыт</div>
+      </div>
+    </div>
+    <div class="shop-arrow">›</div>
+  </div>`;
+}
+
+async function loadShops(category, q) {
+  const cat = category || currentShopFilter;
+  let url = '/api/shops?category=' + encodeURIComponent(cat === 'Все' ? '' : cat);
+  if (q) url += '&q=' + encodeURIComponent(q);
+  document.getElementById('shops-list').innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  const data = await apiFetch(url);
+  if (!data) { document.getElementById('shops-list').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div class="empty-state-text">Не удалось загрузить</div></div>'; return; }
+  allShops = data;
+  document.getElementById('shops-list').innerHTML = data.length
+    ? data.map(renderShopCard).join('')
+    : '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-text">Ничего не найдено</div></div>';
+}
+
+async function loadHomeShops() {
+  const data = await apiFetch('/api/shops');
+  if (!data) return;
+  document.getElementById('home-shops').innerHTML = data.slice(0, 4).map(renderShopCard).join('');
+}
+
+function filterShops(cat, el) {
+  currentShopFilter = cat;
+  if (el) {
+    document.querySelectorAll('#shops-filter-bar .filter-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+  loadShops(cat, document.getElementById('shops-search').value.trim());
+}
+
+function searchShops(q) {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => loadShops(currentShopFilter, q), 300);
+}
+
+async function openShop(id) {
+  currentShopId = id;
   screenHistory.push('screen-shop-detail');
-  document.getElementById('shop-detail-content').innerHTML=`
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-shop-detail').classList.add('active');
+  document.getElementById('shop-detail-content').innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  window.scrollTo(0, 0);
+
+  const s = await apiFetch('/api/shops/' + id);
+  if (!s) { document.getElementById('shop-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div></div>'; return; }
+
+  document.getElementById('shop-detail-content').innerHTML = `
     <div class="shop-detail-hero">
       <div class="shop-detail-icon">${s.emoji}</div>
-      <div class="shop-detail-name">${s.name}</div>
-      <div class="shop-detail-desc">${s.desc}</div>
-      <div class="shop-info-row"><span>📍</span>${s.addr}</div>
-      <div class="shop-info-row"><span>📞</span>${s.phone}</div>
-      <div class="shop-info-row"><span>🕐</span>${s.hours}</div>
+      <div class="shop-detail-name">${s.name}${planBadge(s.plan)}</div>
+      <div class="shop-detail-desc">${s.description || ''}</div>
+      ${s.address ? `<div class="shop-info-row"><span>📍</span>${s.address}</div>` : ''}
+      ${s.phone ? `<div class="shop-info-row"><span>📞</span>${s.phone}</div>` : ''}
+      ${s.hours ? `<div class="shop-info-row"><span>🕐</span>${s.hours}</div>` : ''}
     </div>
     <div class="section"><div class="section-header"><div class="section-title">Товары и цены</div></div>
-    <div class="products-grid">${s.products.map(p=>`<div class="product-card"><div class="product-icon">${p.e}</div><div class="product-name">${p.n}</div><div class="product-price">${p.p}</div></div>`).join('')}</div></div>
-    <div style="padding:0 16px 24px;"><div class="order-btn" onclick="openDeliveryModal('${s.name}')">🚚 Заказать доставку из магазина</div></div>`;
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('screen-shop-detail').classList.add('active');
-  window.scrollTo(0,0);
+    <div class="products-grid">${(s.products||[]).map(p => `<div class="product-card"><div class="product-icon">${p.e}</div><div class="product-name">${p.n}</div><div class="product-price">${p.p}</div></div>`).join('')}</div></div>
+    <div style="padding:0 16px 24px;">
+      <div class="order-btn" onclick="openDeliveryModal('${s.name.replace(/'/g,"\\'")}')">🚚 Заказать доставку из магазина</div>
+    </div>`;
 }
 
-function openModal(){document.getElementById('modal-title').textContent='Оставить заявку';document.getElementById('modal-overlay').classList.add('open');}
-function openMasterModal(name){document.getElementById('modal-title').textContent='Вызвать: '+name;document.getElementById('modal-overlay').classList.add('open');}
-function openDeliveryModal(type){document.getElementById('modal-title').textContent='Заказать: '+type;document.getElementById('modal-overlay').classList.add('open');}
-function closeModal(e){if(!e||e.target===document.getElementById('modal-overlay'))document.getElementById('modal-overlay').classList.remove('open');}
-function submitModal(){document.getElementById('modal-overlay').classList.remove('open');setTimeout(()=>document.getElementById('success-overlay').classList.add('open'),200);}
+// ── Global search ─────────────────────────────────────────────────────────────
+function hideSearchResults() {
+  document.getElementById('home-search-results').style.display = 'none';
+}
 
-renderMasters(masters);
+async function globalSearch(q) {
+  const el = document.getElementById('home-search-results');
+  if (!q || q.length < 2) { el.style.display = 'none'; return; }
+  const data = await apiFetch('/api/search?q=' + encodeURIComponent(q));
+  if (!data) { el.style.display = 'none'; return; }
+  const masters = data.masters || [];
+  const shops = data.shops || [];
+  if (!masters.length && !shops.length) { el.style.display = 'none'; return; }
+
+  let html = '';
+  if (masters.length) {
+    html += '<div class="search-result-section">Мастера</div>';
+    html += masters.map(m => `<div class="search-result-item" onclick="hideSearchResults();openMaster(${m.id})">
+      <div class="search-result-emoji">${m.emoji}</div>
+      <div class="search-result-info">
+        <div class="search-result-name">${m.name}</div>
+        <div class="search-result-sub">${m.spec} • ${m.price} ${m.price_unit}</div>
+      </div></div>`).join('');
+  }
+  if (shops.length) {
+    html += '<div class="search-result-section">Магазины</div>';
+    html += shops.map(s => `<div class="search-result-item" onclick="hideSearchResults();openShop(${s.id})">
+      <div class="search-result-emoji">${s.emoji}</div>
+      <div class="search-result-info">
+        <div class="search-result-name">${s.name}</div>
+        <div class="search-result-sub">${s.category}</div>
+      </div></div>`).join('');
+  }
+  el.innerHTML = html;
+  el.style.display = 'block';
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.querySelector('.search-wrap');
+  if (wrap && !wrap.contains(e.target)) hideSearchResults();
+});
+
+// ── Profile ───────────────────────────────────────────────────────────────────
+function loadProfile() {
+  const nameEl = document.getElementById('profile-name');
+  const usernameEl = document.getElementById('profile-username');
+  const avatarEl = document.getElementById('profile-avatar');
+
+  if (tgUser) {
+    const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+    nameEl.textContent = fullName || 'Пользователь';
+    usernameEl.textContent = tgUser.username ? '@' + tgUser.username : 'Telegram ID: ' + tgUser.id;
+    avatarEl.textContent = (fullName || 'П')[0].toUpperCase();
+  } else {
+    nameEl.textContent = 'Гость';
+    usernameEl.textContent = 'Откройте в Telegram для входа';
+    avatarEl.textContent = '👤';
+  }
+}
+
+async function showMyRequests() {
+  const sec = document.getElementById('my-requests-section');
+  sec.style.display = 'block';
+  const listEl = document.getElementById('my-requests-list');
+
+  if (!tgUser) {
+    listEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔒</div><div class="empty-state-text">Войдите через Telegram</div></div>';
+    return;
+  }
+  listEl.innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  const data = await apiFetch('/api/requests?tg_id=' + tgUser.id);
+  if (!data || !data.length) {
+    listEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">Заявок пока нет</div></div>';
+    return;
+  }
+  listEl.innerHTML = data.map(r => `<div class="req-card">
+    <div class="req-title">${r.description || r.request_type}</div>
+    <div class="req-meta">${r.created_at ? r.created_at.substring(0,10) : ''}</div>
+    <div class="req-status ${r.status}">${r.status === 'new' ? 'Новая' : 'Выполнена'}</div>
+  </div>`).join('');
+  sec.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
+function prefillModalUser() {
+  if (tgUser) {
+    const nameEl = document.getElementById('modal-name');
+    if (!nameEl.value) {
+      nameEl.value = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+    }
+  }
+}
+
+function openModal() {
+  modalMasterId = null; modalShopId = null; modalType = 'general';
+  document.getElementById('modal-title').textContent = 'Оставить заявку';
+  document.getElementById('modal-overlay').classList.add('open');
+  prefillModalUser();
+}
+
+function openMasterModal(masterId, name) {
+  modalMasterId = masterId; modalShopId = null; modalType = 'master';
+  document.getElementById('modal-title').textContent = 'Вызвать: ' + name;
+  document.getElementById('modal-overlay').classList.add('open');
+  prefillModalUser();
+}
+
+function openDeliveryModal(type) {
+  modalMasterId = null; modalShopId = currentShopId; modalType = 'delivery';
+  document.getElementById('modal-title').textContent = 'Заказать: ' + type;
+  document.getElementById('modal-overlay').classList.add('open');
+  prefillModalUser();
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal-overlay')) {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+}
+
+async function submitModal() {
+  const name = document.getElementById('modal-name').value.trim();
+  const phone = document.getElementById('modal-phone').value.trim();
+  const desc = document.getElementById('modal-desc').value.trim();
+
+  if (!name || !phone) {
+    alert('Укажите имя и телефон');
+    return;
+  }
+
+  const body = {
+    user_tg_id: tgUser ? tgUser.id : null,
+    user_name: name,
+    user_phone: phone,
+    description: desc,
+    master_id: modalMasterId,
+    shop_id: modalShopId,
+    request_type: modalType
+  };
+
+  await apiPost('/api/requests', body);
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('modal-name').value = '';
+  document.getElementById('modal-phone').value = '';
+  document.getElementById('modal-desc').value = '';
+  setTimeout(() => document.getElementById('success-overlay').classList.add('open'), 200);
+
+  if (tg) tg.HapticFeedback && tg.HapticFeedback.notificationOccurred('success');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+(async function init() {
+  await Promise.all([
+    loadStats(),
+    loadHomeTopMasters(),
+    loadHomeShops(),
+  ]);
+})();
 </script>
 </body>
 </html>
