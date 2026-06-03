@@ -12,7 +12,7 @@ from telebot.types import (
 
 # ========== НАСТРОЙКИ ==========
 TOKEN = "8777850515:AAGR16m-7wdy1aFC3Baq1KcO2Eyx4xK28tU"
-MINI_APP_URL = "https://project-d7s9l.vercel.app"
+MINI_APP_URL = "https://project-d7s9l.vercel.app/index.html"
 ADMIN_ID = 5715605642
 
 # СБП — реквизиты для приёма оплаты
