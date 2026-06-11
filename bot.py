@@ -41,6 +41,9 @@ def main_keyboard():
         KeyboardButton("🛠️ Стать мастером"),
         KeyboardButton("📞 Поддержка"),
     )
+    kb.add(
+        KeyboardButton("⚖️ Юридическая консультация"),
+    )
     return kb
 
 
@@ -58,6 +61,7 @@ def start_inline():
         InlineKeyboardButton("🏪 Магазины стройматериалов", callback_data="shops"),
         InlineKeyboardButton("🚚 Заказать доставку", callback_data="delivery"),
         InlineKeyboardButton("ℹ️ Как это работает", callback_data="howto"),
+        InlineKeyboardButton("⚖️ Юридическая консультация", callback_data="legal"),
     )
     return kb
 
@@ -267,6 +271,61 @@ def send_become_master(chat_id):
 
 
 # ───────────────────────────────────────────
+# ЮРИДИЧЕСКАЯ КОНСУЛЬТАЦИЯ
+# ───────────────────────────────────────────
+def send_legal(chat_id):
+    text = (
+        "⚖️ *Юридическая консультация*\n\n"
+        "Наши юристы помогут вам по вопросам:\n\n"
+        "🏠 *Недвижимость*\n"
+        "   Купля-продажа, аренда, приватизация, споры\n\n"
+        "🔨 *Строительство и ремонт*\n"
+        "   Споры с подрядчиками, нарушение договора, гарантии\n\n"
+        "📄 *Договоры*\n"
+        "   Составление, проверка, расторжение\n\n"
+        "👨‍👩‍👧 *Семейное право*\n"
+        "   Раздел имущества, наследство\n\n"
+        "🏢 *Защита прав потребителей*\n"
+        "   Возврат товара, некачественные услуги\n\n"
+        "Первичная консультация — *бесплатно* ✅\n"
+        "Опишите вашу проблему — юрист ответит в течение часа."
+    )
+    kb = InlineKeyboardMarkup(row_width=1)
+    kb.add(
+        InlineKeyboardButton("📝 Задать вопрос юристу", callback_data="legal_ask"),
+        InlineKeyboardButton("📞 Срочная консультация", callback_data="legal_urgent"),
+    )
+    bot.send_message(chat_id, text, parse_mode="Markdown", reply_markup=kb)
+
+
+def receive_legal_question(message):
+    text = message.text
+    user = message.from_user
+    cid = message.chat.id
+
+    bot.send_message(
+        cid,
+        "✅ *Вопрос получен!*\n\n"
+        "Юрист ознакомится с вашим вопросом и свяжется с вами в течение *1 часа*.\n\n"
+        "Первичная консультация — бесплатная 🆓\n\n"
+        "Спасибо за обращение! 🙏",
+        parse_mode="Markdown",
+        reply_markup=main_keyboard()
+    )
+
+    admin_text = (
+        f"⚖️ *Новый юридический вопрос!*\n\n"
+        f"👤 {user.full_name} (@{user.username or 'нет'})\n"
+        f"🆔 ID: {user.id}\n\n"
+        f"📝 *Вопрос:*\n{text}"
+    )
+    try:
+        bot.send_message(ADMIN_ID, admin_text, parse_mode="Markdown")
+    except Exception:
+        pass
+
+
+# ───────────────────────────────────────────
 # ОБРАБОТКА ТЕКСТОВЫХ КНОПОК (ReplyKeyboard)
 # ───────────────────────────────────────────
 @bot.message_handler(func=lambda m: True)
@@ -317,6 +376,10 @@ def text_handler(message):
             "Работаем: 8:00 – 22:00 ежедневно",
             parse_mode="Markdown"
         )
+
+    elif "Юридическая консультация" in t:
+        send_legal(cid)
+
     else:
         bot.send_message(
             cid,
@@ -438,6 +501,35 @@ def callback_handler(call):
             parse_mode="Markdown"
         )
         bot.register_next_step_handler(call.message, receive_application)
+
+    elif call.data == "legal":
+        send_legal(cid)
+
+    elif call.data == "legal_ask":
+        bot.send_message(
+            cid,
+            "📝 *Задайте ваш вопрос юристу*\n\n"
+            "Опишите вашу ситуацию как можно подробнее:\n"
+            "• Суть проблемы\n"
+            "• Что уже предпринималось\n"
+            "• Желаемый результат\n\n"
+            "_Например: Заключил договор с подрядчиком на ремонт, он взял аванс и пропал. Что делать?_",
+            parse_mode="Markdown"
+        )
+        bot.register_next_step_handler(call.message, receive_legal_question)
+
+    elif call.data == "legal_urgent":
+        bot.send_message(
+            cid,
+            "📞 *Срочная юридическая консультация*\n\n"
+            "Для немедленной связи с юристом:\n"
+            "👤 @legal_makhachkala\n"
+            "📱 +7 (928) 000-00-01\n\n"
+            "Работаем: 9:00 – 21:00 ежедневно\n\n"
+            "Или опишите ситуацию — перезвоним в течение 15 минут:",
+            parse_mode="Markdown"
+        )
+        bot.register_next_step_handler(call.message, receive_legal_question)
 
 
 # ───────────────────────────────────────────
