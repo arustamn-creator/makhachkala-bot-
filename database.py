@@ -74,10 +74,54 @@ def init_db():
         status TEXT DEFAULT 'new',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
+
+    CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        shop_id INTEGER NOT NULL REFERENCES shops(id),
+        emoji TEXT DEFAULT '📦',
+        name TEXT NOT NULL,
+        price INTEGER NOT NULL,
+        unit TEXT DEFAULT 'шт',
+        active INTEGER DEFAULT 1
+    );
+
+    CREATE TABLE IF NOT EXISTS cart_items (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_key TEXT NOT NULL,
+        product_id INTEGER NOT NULL REFERENCES products(id),
+        quantity INTEGER DEFAULT 1,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(user_key, product_id)
+    );
+
+    CREATE TABLE IF NOT EXISTS orders (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_key TEXT NOT NULL,
+        customer_name TEXT,
+        customer_phone TEXT,
+        customer_address TEXT,
+        shop_id INTEGER REFERENCES shops(id),
+        items_json TEXT NOT NULL,
+        total INTEGER NOT NULL,
+        status TEXT DEFAULT 'new',
+        notified INTEGER DEFAULT 0,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
     """)
+
+    _add_column_if_missing(c, "shops", "owner_code", "TEXT")
+    _add_column_if_missing(c, "shops", "owner_tg_id", "INTEGER")
+    _add_column_if_missing(c, "masters", "owner_code", "TEXT")
+    _add_column_if_missing(c, "masters", "owner_tg_id", "INTEGER")
 
     conn.commit()
     conn.close()
+
+
+def _add_column_if_missing(cursor, table, column, coltype):
+    cols = [r[1] for r in cursor.execute(f"PRAGMA table_info({table})").fetchall()]
+    if column not in cols:
+        cursor.execute(f"ALTER TABLE {table} ADD COLUMN {column} {coltype}")
 
 
 def seed_db():
@@ -225,7 +269,77 @@ def seed_db():
     conn.close()
 
 
+def _parse_price(raw):
+    """'450₽/50кг' -> (450, '50кг'); '15000₽' -> (15000, 'шт')"""
+    import re
+    m = re.match(r"(\d+)\s*₽(?:/(.+))?", raw.strip())
+    if not m:
+        return 0, "шт"
+    return int(m.group(1)), (m.group(2) or "шт")
+
+
+def seed_products():
+    """Turns each shop's flat 'products' text column into real rows,
+    so cart/orders can reference a product_id instead of a display string."""
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("SELECT COUNT(*) FROM products")
+    if c.fetchone()[0] > 0:
+        conn.close()
+        return
+
+    for shop in c.execute("SELECT id, products FROM shops").fetchall():
+        raw = shop["products"] or ""
+        for item in raw.split("|"):
+            if "=" not in item:
+                continue
+            emoji_name, price_part = item.split("=", 1)
+            emoji_name = emoji_name.strip()
+            emoji = emoji_name[0] if emoji_name else "📦"
+            name = emoji_name[1:].strip() if len(emoji_name) > 1 else emoji_name
+            price, unit = _parse_price(price_part)
+            c.execute(
+                "INSERT INTO products (shop_id, emoji, name, price, unit) VALUES (?,?,?,?,?)",
+                (shop["id"], emoji, name, price, unit),
+            )
+
+    conn.commit()
+    conn.close()
+
+
+_OWNER_CODE_WORDS = [
+    "акация", "базальт", "ветер", "гранит", "дуб", "ель", "жасмин",
+    "известняк", "клён", "лиственница", "мрамор", "нефрит", "орех", "пихта",
+    "ракушечник", "сосна", "туф", "уголь", "фундамент", "хвоя", "цемент",
+    "черепица", "шифер", "щебень", "экобрус", "юрта", "янтарь", "берёза",
+    "вагонка", "гравий", "доломит", "ежевика", "железо", "занавес", "известь",
+    "кирпич", "лопата", "молоток", "новосёл", "отвёртка",
+]
+
+
+def seed_owner_codes():
+    """Assigns each shop/master a unique claim code word (idempotent —
+    only fills rows where owner_code is still NULL)."""
+    conn = get_db()
+    c = conn.cursor()
+    words = iter(_OWNER_CODE_WORDS)
+
+    for table in ("shops", "masters"):
+        rows = c.execute(f"SELECT id FROM {table} WHERE owner_code IS NULL ORDER BY id").fetchall()
+        for row in rows:
+            try:
+                word = next(words)
+            except StopIteration:
+                word = f"код{row['id']}"
+            c.execute(f"UPDATE {table} SET owner_code = ? WHERE id = ?", (word, row["id"]))
+
+    conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     init_db()
     seed_db()
+    seed_products()
+    seed_owner_codes()
     print("DB initialized and seeded")

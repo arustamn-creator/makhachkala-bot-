@@ -156,11 +156,32 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .shop-detail-desc{font-size:13px;color:var(--muted);margin-bottom:12px;}
 .shop-info-row{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:8px;}
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;}
-.product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;cursor:pointer;transition:all 0.2s;}
-.product-card:active{transform:scale(0.96);border-color:var(--accent);}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;transition:all 0.2s;}
 .product-icon{font-size:28px;margin-bottom:8px;}
 .product-name{font-size:12px;font-weight:600;margin-bottom:3px;}
-.product-price{font-size:13px;font-weight:700;color:var(--accent);}
+.product-price{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;}
+.add-cart-btn{width:100%;padding:8px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:12px;font-weight:600;cursor:pointer;text-align:center;}
+.add-cart-btn:active{transform:scale(0.95);}
+.add-cart-btn.in-cart{background:rgba(34,197,94,0.12);border-color:var(--green);color:var(--green);}
+.qty-stepper{display:flex;align-items:center;justify-content:space-between;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:4px;}
+.qty-stepper button{width:26px;height:26px;border:none;background:var(--accent);color:#fff;border-radius:6px;font-size:14px;cursor:pointer;}
+.qty-stepper span{font-size:13px;font-weight:600;}
+
+/* CART */
+.cart-badge{position:absolute;top:-4px;right:-4px;background:var(--accent);color:#fff;font-size:9px;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 3px;}
+.cart-shop-group{margin:0 16px 16px;}
+.cart-shop-title{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;font-weight:600;margin-bottom:8px;}
+.cart-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.cart-item-info{flex:1;min-width:0;}
+.cart-item-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.cart-item-price{font-size:12px;color:var(--muted);}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin:0 16px 16px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:14px;font-size:15px;font-weight:700;}
+.cart-total-row span:last-child{color:var(--accent2);font-size:18px;}
+
+/* OWNER */
+.owner-order-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;}
+.owner-order-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.owner-order-meta{font-size:11px;color:var(--muted);}
 
 /* PROFILE */
 .profile-card{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid var(--border);}
@@ -252,6 +273,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
         <div><div class="logo-text">Всё для дома<br><span>Махачкала</span></div></div>
       </div>
       <div class="header-actions">
+        <div class="icon-btn" onclick="openCart()" style="position:relative;">🛒<div class="cart-badge" id="cart-badge" style="display:none;">0</div></div>
         <div class="icon-btn">🔔</div>
         <div class="icon-btn" onclick="navTo('screen-profile','nav-profile')">👤</div>
       </div>
@@ -441,6 +463,30 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   </div>
 </div>
 
+<!-- CART -->
+<div class="screen" id="screen-cart">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Корзина</div>
+      <div style="width:60px;"></div>
+    </div>
+  </div>
+  <div class="content" id="cart-content"><div class="loader"><div class="spinner"></div></div></div>
+</div>
+
+<!-- OWNER DASHBOARD -->
+<div class="screen" id="screen-owner">
+  <div class="header">
+    <div class="header-top">
+      <div class="back-btn" onclick="goBack()">‹ Назад</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мои заказы</div>
+      <div style="width:60px;"></div>
+    </div>
+  </div>
+  <div class="content" id="owner-content"><div class="loader"><div class="spinner"></div></div></div>
+</div>
+
 <!-- PROFILE -->
 <div class="screen" id="screen-profile">
   <div class="header">
@@ -462,6 +508,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
       <div class="menu-item"><div class="menu-icon">⭐</div><div class="menu-text">Мои отзывы</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">🔔</div><div class="menu-text">Уведомления</div><div class="menu-arrow">›</div></div>
       <div class="menu-item" onclick="openModal()"><div class="menu-icon">🛠️</div><div class="menu-text">Стать мастером</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item" id="owner-menu-item" onclick="openOwnerDashboard()"><div class="menu-icon">🔑</div><div class="menu-text">Мои заказы (владелец)</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item" onclick="openOwnerClaimModal()"><div class="menu-icon">➕</div><div class="menu-text">Подтвердить магазин/мастера по коду</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">📞</div><div class="menu-text">Поддержка</div><div class="menu-arrow">›</div></div>
     </div>
     <div id="my-requests-section" style="display:none;margin-top:8px;">
@@ -490,6 +538,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
     <textarea class="modal-input modal-textarea" id="modal-desc" placeholder="Опишите задачу подробнее..."></textarea>
     <div class="modal-submit" onclick="submitModal()">Отправить заявку</div>
     <div class="modal-close" onclick="closeModal()">Отмена</div>
+  </div>
+</div>
+
+<!-- OWNER CLAIM MODAL -->
+<div class="modal-overlay" id="owner-modal-overlay" onclick="closeOwnerClaimModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Подтвердить владение</div>
+    <input class="modal-input" id="owner-code-input" placeholder="Кодовое слово" autocomplete="off">
+    <div class="modal-submit" onclick="submitOwnerClaim()">Подтвердить</div>
+    <div class="modal-close" onclick="closeOwnerClaimModal()">Отмена</div>
   </div>
 </div>
 
@@ -773,7 +832,10 @@ async function openShop(id) {
   document.getElementById('shop-detail-content').innerHTML = '<div class="loader"><div class="spinner"></div></div>';
   window.scrollTo(0, 0);
 
-  const s = await apiFetch('/api/shops/' + id);
+  const [s, products] = await Promise.all([
+    apiFetch('/api/shops/' + id),
+    apiFetch('/api/products?shop_id=' + id),
+  ]);
   if (!s) { document.getElementById('shop-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div></div>'; return; }
 
   document.getElementById('shop-detail-content').innerHTML = `
@@ -786,10 +848,200 @@ async function openShop(id) {
       ${s.hours ? `<div class="shop-info-row"><span>🕐</span>${s.hours}</div>` : ''}
     </div>
     <div class="section"><div class="section-header"><div class="section-title">Товары и цены</div></div>
-    <div class="products-grid">${(s.products||[]).map(p => `<div class="product-card"><div class="product-icon">${p.e}</div><div class="product-name">${p.n}</div><div class="product-price">${p.p}</div></div>`).join('')}</div></div>
+    <div class="products-grid" id="shop-products-grid">${(products||[]).map(renderProductCard).join('')}</div></div>
     <div style="padding:0 16px 24px;">
       <div class="order-btn" onclick="openDeliveryModal('${s.name.replace(/'/g,"\\'")}')">🚚 Заказать доставку из магазина</div>
     </div>`;
+}
+
+// ── Cart ─────────────────────────────────────────────────────────────────────
+function getUserKey() {
+  if (tgUser && tgUser.id) return 'tg' + tgUser.id;
+  let key = localStorage.getItem('user_key');
+  if (!key) {
+    key = 'guest' + Math.random().toString(36).slice(2) + Date.now();
+    localStorage.setItem('user_key', key);
+  }
+  return key;
+}
+const userKey = getUserKey();
+let cartQty = {}; // product_id -> quantity, filled from /api/cart
+
+function renderProductCard(p) {
+  const qty = cartQty[p.id] || 0;
+  const inner = qty > 0
+    ? `<div class="qty-stepper"><button onclick="changeCartQty(${p.id},${qty - 1})">−</button><span>${qty}</span><button onclick="changeCartQty(${p.id},${qty + 1})">+</button></div>`
+    : `<div class="add-cart-btn" onclick="changeCartQty(${p.id},1)">+ В корзину</div>`;
+  return `<div class="product-card" id="product-card-${p.id}">
+    <div class="product-icon">${p.emoji}</div>
+    <div class="product-name">${p.name}</div>
+    <div class="product-price">${p.price}₽/${p.unit}</div>
+    ${inner}
+  </div>`;
+}
+
+async function changeCartQty(productId, quantity) {
+  const r = await apiPost('/api/cart', { user_key: userKey, product_id: productId, quantity });
+  cartQty[productId] = quantity > 0 ? quantity : 0;
+  const card = document.getElementById('product-card-' + productId);
+  if (card) {
+    const stepper = card.querySelector('.qty-stepper, .add-cart-btn');
+    if (stepper) stepper.outerHTML = quantity > 0
+      ? `<div class="qty-stepper"><button onclick="changeCartQty(${productId},${quantity - 1})">−</button><span>${quantity}</span><button onclick="changeCartQty(${productId},${quantity + 1})">+</button></div>`
+      : `<div class="add-cart-btn" onclick="changeCartQty(${productId},1)">+ В корзину</div>`;
+  }
+  updateCartBadge(r && r.cart_count);
+  if (tg) tg.HapticFeedback && tg.HapticFeedback.impactOccurred('light');
+}
+
+function updateCartBadge(count) {
+  const badge = document.getElementById('cart-badge');
+  if (count && count > 0) {
+    badge.style.display = 'flex';
+    badge.textContent = count;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+async function refreshCartBadge() {
+  const data = await apiFetch('/api/cart?user_key=' + encodeURIComponent(userKey));
+  if (!data) return;
+  cartQty = {};
+  (data.items || []).forEach(i => cartQty[i.product_id] = i.quantity);
+  const count = (data.items || []).reduce((s, i) => s + i.quantity, 0);
+  updateCartBadge(count);
+}
+
+function openCart() {
+  screenHistory.push('screen-cart');
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-cart').classList.add('active');
+  window.scrollTo(0, 0);
+  loadCart();
+}
+
+async function loadCart() {
+  const el = document.getElementById('cart-content');
+  el.innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  const data = await apiFetch('/api/cart?user_key=' + encodeURIComponent(userKey));
+  if (!data || !data.items || !data.items.length) {
+    el.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🛒</div><div class="empty-state-text">Корзина пуста</div></div>';
+    return;
+  }
+  const byShop = {};
+  data.items.forEach(i => { (byShop[i.shop_name] = byShop[i.shop_name] || []).push(i); });
+
+  let html = '';
+  for (const shopName in byShop) {
+    html += `<div class="cart-shop-group"><div class="cart-shop-title">${shopName}</div>`;
+    html += byShop[shopName].map(i => `
+      <div class="cart-item">
+        <div style="font-size:22px;">${i.emoji}</div>
+        <div class="cart-item-info"><div class="cart-item-name">${i.name}</div><div class="cart-item-price">${i.price}₽ × ${i.quantity}</div></div>
+        <div class="qty-stepper"><button onclick="changeCartQtyAndReload(${i.product_id},${i.quantity - 1})">−</button><span>${i.quantity}</span><button onclick="changeCartQtyAndReload(${i.product_id},${i.quantity + 1})">+</button></div>
+      </div>`).join('');
+    html += '</div>';
+  }
+  html += `<div class="cart-total-row"><span>Итого</span><span>${data.total}₽</span></div>`;
+  html += `
+    <div style="padding:0 16px;">
+      <input class="modal-input" id="cart-name" placeholder="Ваше имя">
+      <input class="modal-input" id="cart-phone" placeholder="Телефон" type="tel">
+      <input class="modal-input" id="cart-address" placeholder="Адрес доставки">
+      <div class="order-btn" onclick="checkoutCart()">Оформить заказ</div>
+    </div>
+    <div style="height:24px;"></div>`;
+  el.innerHTML = html;
+
+  if (tgUser) {
+    const nameEl = document.getElementById('cart-name');
+    if (nameEl && !nameEl.value) nameEl.value = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+  }
+}
+
+async function changeCartQtyAndReload(productId, quantity) {
+  await changeCartQty(productId, quantity);
+  loadCart();
+}
+
+async function checkoutCart() {
+  const customer_name = document.getElementById('cart-name').value.trim();
+  const customer_phone = document.getElementById('cart-phone').value.trim();
+  const customer_address = document.getElementById('cart-address').value.trim();
+  if (!customer_name || !customer_phone) {
+    alert('Укажите имя и телефон');
+    return;
+  }
+  const r = await apiPost('/api/orders', { user_key: userKey, customer_name, customer_phone, customer_address });
+  if (!r || r.error) {
+    alert(r && r.error ? r.error : 'Не удалось оформить заказ');
+    return;
+  }
+  cartQty = {};
+  updateCartBadge(0);
+  goBack();
+  setTimeout(() => document.getElementById('success-overlay').classList.add('open'), 200);
+  if (tg) tg.HapticFeedback && tg.HapticFeedback.notificationOccurred('success');
+}
+
+// ── Owner claim ──────────────────────────────────────────────────────────────
+function openOwnerClaimModal() {
+  document.getElementById('owner-modal-overlay').classList.add('open');
+}
+function closeOwnerClaimModal(e) {
+  if (!e || e.target === document.getElementById('owner-modal-overlay')) {
+    document.getElementById('owner-modal-overlay').classList.remove('open');
+  }
+}
+async function submitOwnerClaim() {
+  const code = document.getElementById('owner-code-input').value.trim();
+  if (!code) return;
+  if (!tgUser) { alert('Откройте приложение через Telegram'); return; }
+  const r = await apiPost('/api/owner/claim', { telegram_id: tgUser.id, code });
+  closeOwnerClaimModal();
+  document.getElementById('owner-code-input').value = '';
+  if (!r || r.error) {
+    alert(r && r.error ? r.error : 'Не удалось подтвердить код');
+    return;
+  }
+  alert((r.claimed.type === 'shop' ? 'Магазин' : 'Мастер') + ' «' + r.claimed.name + '» подтверждён');
+}
+
+function openOwnerDashboard() {
+  screenHistory.push('screen-owner');
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-owner').classList.add('active');
+  window.scrollTo(0, 0);
+  loadOwnerDashboard();
+}
+
+async function loadOwnerDashboard() {
+  const el = document.getElementById('owner-content');
+  el.innerHTML = '<div class="loader"><div class="spinner"></div></div>';
+  if (!tgUser) {
+    el.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔒</div><div class="empty-state-text">Войдите через Telegram</div></div>';
+    return;
+  }
+  const data = await apiFetch('/api/owner/dashboard?telegram_id=' + tgUser.id);
+  if (!data || (!data.shops.length && !data.masters.length)) {
+    el.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔑</div><div class="empty-state-text">Пока нет подтверждённых магазинов или профиля мастера.<br>Подтвердите код в разделе «Подтвердить магазин/мастера по коду».</div></div>';
+    return;
+  }
+  let html = '';
+  data.shops.forEach(shop => {
+    html += `<div class="section-header" style="padding:0 16px;"><div class="section-title">${shop.name} — заказы</div></div>`;
+    html += shop.orders.length
+      ? shop.orders.map(o => `<div class="owner-order-card" style="margin:0 16px 8px;"><div class="owner-order-title">Заказ #${o.id} — ${o.total}₽</div><div class="owner-order-meta">${o.customer_name}, ${o.customer_phone}${o.customer_address ? ', ' + o.customer_address : ''}</div></div>`).join('')
+      : '<div class="empty-state" style="padding:16px;"><div class="empty-state-text">Заказов пока нет</div></div>';
+  });
+  data.masters.forEach(master => {
+    html += `<div class="section-header" style="padding:0 16px;"><div class="section-title">${master.name} — заявки</div></div>`;
+    html += master.requests.length
+      ? master.requests.map(r => `<div class="owner-order-card" style="margin:0 16px 8px;"><div class="owner-order-title">${r.description || r.request_type}</div><div class="owner-order-meta">${r.user_name || ''} ${r.user_phone || ''}</div></div>`).join('')
+      : '<div class="empty-state" style="padding:16px;"><div class="empty-state-text">Заявок пока нет</div></div>';
+  });
+  el.innerHTML = html;
 }
 
 // ── Global search ─────────────────────────────────────────────────────────────
@@ -948,6 +1200,7 @@ async function submitModal() {
     loadStats(),
     loadHomeTopMasters(),
     loadHomeShops(),
+    refreshCartBadge(),
   ]);
 })();
 </script>
