@@ -2,6 +2,9 @@ import sqlite3
 import os
 
 DB_PATH = os.environ.get("DB_PATH", "makhachkala.db")
+_db_dir = os.path.dirname(DB_PATH)
+if _db_dir:
+    os.makedirs(_db_dir, exist_ok=True)
 
 
 def get_db():
