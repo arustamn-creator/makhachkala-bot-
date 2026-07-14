@@ -13,7 +13,7 @@ from telebot.types import (
 # ========== НАСТРОЙКИ ==========
 import os 
 TOKEN = os.environ.get("BOT_TOKEN") # Вставь сюда токен
-MINI_APP_URL = "https://project-d7s9l.vercel.app" # Ссылка на мини-апп
+MINI_APP_URL = "https://makhachkala-webapp-production.up.railway.app" # Ссылка на мини-апп
 ADMIN_ID = 5715605642  # Твой Telegram ID (для получения заявок)
 # ================================
 
