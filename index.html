@@ -9,7 +9,7 @@
 :root{
   --bg:#14181A;--bg2:#1B2124;--bg3:#212A2C;--card:#1B2124;
   --border:rgba(185,190,194,0.16);--accent:#1F8A5F;--accent2:#B9BEC2;
-  --accent3:#1F8A5F;--text:#E8ECEA;--muted:#7C8C88;--green:#22c55e;
+  --accent3:#1F8A5F;--text:#E8ECEA;--muted:#7C8C88;--green:#2ECC81;
   --red-glow:rgba(31,138,95,0.28);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -43,7 +43,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 .hero{margin:0 16px 20px;background:linear-gradient(135deg,#0F1A16 0%,#141B1D 50%,#0B0F10 100%);border-radius:18px;padding:20px;position:relative;overflow:hidden;border:1px solid rgba(31,138,95,0.2);}
 .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(31,138,95,0.4) 0%,transparent 70%);border-radius:50%;}
 .hero::after{content:'';position:absolute;bottom:-30px;left:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(185,190,194,0.2) 0%,transparent 70%);border-radius:50%;}
-.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--green);font-weight:500;margin-bottom:10px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(46,204,129,0.12);border:1px solid rgba(46,204,129,0.25);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--green);font-weight:500;margin-bottom:10px;}
 .hero h2{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;line-height:1.2;margin-bottom:6px;}
 .hero h2 span{color:var(--accent);}
 .hero p{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
@@ -78,7 +78,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 .master-rating{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;}
 .star{color:#f59e0b;}
 .master-price{margin-top:6px;font-size:11px;color:var(--accent);font-weight:600;}
-.badge-online{display:inline-block;background:rgba(34,197,94,0.12);color:var(--green);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:600;margin-bottom:6px;}
+.badge-online{display:inline-block;background:rgba(46,204,129,0.12);color:var(--green);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:600;margin-bottom:6px;}
 .badge-pro{display:inline-block;background:rgba(185,190,194,0.15);color:var(--accent2);border:1px solid rgba(185,190,194,0.3);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
 .badge-premium{display:inline-block;background:rgba(31,138,95,0.2);color:var(--accent);border:1px solid rgba(31,138,95,0.4);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
 
@@ -134,9 +134,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 .promo-emoji{position:absolute;right:12px;top:10px;font-size:32px;opacity:0.35;}
 
 /* MASTER DETAIL */
-.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(31,138,95,0.15);background-size:cover;background-position:center;}
-.master-detail-hero.has-photo{background-image:linear-gradient(180deg,rgba(20,24,26,0.35) 0%,rgba(20,24,26,0.88) 78%),var(--photo-url);}
-.shop-detail-hero.has-photo{background-image:linear-gradient(180deg,rgba(20,24,26,0.35) 0%,rgba(20,24,26,0.9) 82%),var(--photo-url);background-size:cover;background-position:center;}
+.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(31,138,95,0.15);}
 .detail-avatar{width:74px;height:74px;border-radius:20px;font-size:38px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
 .detail-name{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;}
 .detail-spec{font-size:14px;color:var(--muted);margin-bottom:12px;}
@@ -160,13 +158,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;}
 .product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;transition:all 0.2s;}
 .product-icon{font-size:28px;margin-bottom:8px;}
-.product-photo{width:100%;height:64px;border-radius:9px;background-size:cover;background-position:center;margin-bottom:8px;display:flex;align-items:flex-end;justify-content:flex-end;padding:4px;}
-.product-photo span{font-size:16px;background:rgba(20,24,26,0.55);border-radius:6px;padding:1px 5px;}
 .product-name{font-size:12px;font-weight:600;margin-bottom:3px;}
 .product-price{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;}
 .add-cart-btn{width:100%;padding:8px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:12px;font-weight:600;cursor:pointer;text-align:center;}
 .add-cart-btn:active{transform:scale(0.95);}
-.add-cart-btn.in-cart{background:rgba(34,197,94,0.12);border-color:var(--green);color:var(--green);}
+.add-cart-btn.in-cart{background:rgba(46,204,129,0.12);border-color:var(--green);color:var(--green);}
 .qty-stepper{display:flex;align-items:center;justify-content:space-between;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:4px;}
 .qty-stepper button{width:26px;height:26px;border:none;background:var(--accent);color:#fff;border-radius:6px;font-size:14px;cursor:pointer;}
 .qty-stepper span{font-size:13px;font-weight:600;}
@@ -203,7 +199,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 .req-title{font-size:13px;font-weight:600;margin-bottom:4px;}
 .req-meta{font-size:11px;color:var(--muted);}
 .req-status{display:inline-block;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:6px;}
-.req-status.new{background:rgba(34,197,94,0.12);color:var(--green);}
+.req-status.new{background:rgba(46,204,129,0.12);color:var(--green);}
 .req-status.done{background:rgba(185,190,194,0.12);color:var(--accent2);}
 
 /* FILTER */
@@ -251,7 +247,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 /* SUCCESS */
 .success-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;align-items:center;justify-content:center;}
 .success-overlay.open{display:flex;}
-.success-box{background:var(--bg2);border-radius:24px;padding:32px 24px;text-align:center;border:1px solid rgba(34,197,94,0.2);margin:20px;}
+.success-box{background:var(--bg2);border-radius:24px;padding:32px 24px;text-align:center;border:1px solid rgba(46,204,129,0.2);margin:20px;}
 .success-icon{font-size:56px;margin-bottom:16px;}
 .success-title{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;}
 .success-text{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;}
@@ -573,32 +569,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 // ── Config ──────────────────────────────────────────────────────────────────
 const API = '';  // same origin; change to 'https://your-backend.railway.app' if separated
 
-// Real photos, one per category (Wikimedia Commons / Pexels, freely licensed,
-// no visible third-party brand/logo in frame). Categories not listed here
-// intentionally show no photo — no honest match was found for them.
-const MASTER_CATEGORY_PHOTOS = {
-  'Отделочники': 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasterer_at_work_on_a_wall_arp.jpg?width=800',
-  'Сварщики': 'https://commons.wikimedia.org/wiki/Special:FilePath/A_welder_at_work_creating_piece_joining_two_metals.jpg?width=800',
-  'Маляры': 'https://commons.wikimedia.org/wiki/Special:FilePath/203_365_Painting_the_basement._(35705667550).jpg?width=800',
-  'Каменщики': 'https://commons.wikimedia.org/wiki/Special:FilePath/Mason_at_work.jpg?width=800',
-  'Плотники': 'https://commons.wikimedia.org/wiki/Special:FilePath/Carpenter_at_work_1.jpg?width=800',
-  'Ландшафт': 'https://commons.wikimedia.org/wiki/Special:FilePath/Man_trimming_the_lawn_on_Almat_farm.jpg?width=800',
-  'Камень': "https://commons.wikimedia.org/wiki/Special:FilePath/Taglio_e_profilatura_di_un'architrave.jpg?width=800",
-  'Видеонаблюдение': 'https://commons.wikimedia.org/wiki/Special:FilePath/CCTV_camera.JPG?width=800',
-  'Сборка IKEA': 'https://images.pexels.com/photos/5805487/pexels-photo-5805487.jpeg?w=800',
-  'Реставрация': "https://commons.wikimedia.org/wiki/Special:FilePath/06_Restoration_of_gilded_mirror_in_Muzeum_Gornoslaskie,_Bytom,_Poland_-_furniture_restorer_working.jpg?width=800",
-};
-const SHOP_CATEGORY_PHOTOS = {
-  'Стройматериалы': 'https://commons.wikimedia.org/wiki/Special:FilePath/Bricks_waiting_to_be_used.jpg?width=800',
-  'Плитка': 'https://commons.wikimedia.org/wiki/Special:FilePath/Ceramic_tiles_01.jpg?width=800',
-  'Электрика': 'https://commons.wikimedia.org/wiki/Special:FilePath/Switches-electrical.agr.jpg?width=800',
-  'Сантехника': 'https://commons.wikimedia.org/wiki/Special:FilePath/Copper_water_pipes.jpg?width=800',
-  'Дерево': 'https://images.pexels.com/photos/12278569/pexels-photo-12278569.jpeg?w=800',
-  'Природный камень': 'https://images.pexels.com/photos/30112371/pexels-photo-30112371.jpeg?w=800',
-  'Окна и двери': 'https://images.pexels.com/photos/5900792/pexels-photo-5900792.jpeg?w=800',
-  'Металл': 'https://commons.wikimedia.org/wiki/Special:FilePath/A_bunch_of_rebar.jpg?width=800',
-};
-
 // ── Telegram WebApp ─────────────────────────────────────────────────────────
 const tg = window.Telegram && window.Telegram.WebApp;
 let tgUser = null;
@@ -615,7 +585,6 @@ let currentMasterFilter = 'Все';
 let currentShopFilter = 'Все';
 let currentMasterId = null;
 let currentShopId = null;
-let currentProductPhoto = null;
 let modalMasterId = null;
 let modalShopId = null;
 let modalType = 'master';
@@ -781,9 +750,8 @@ async function openMaster(id) {
   const m = await apiFetch('/api/masters/' + id);
   if (!m) { document.getElementById('master-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div class="empty-state-text">Не удалось загрузить</div></div>'; return; }
 
-  const mPhoto = MASTER_CATEGORY_PHOTOS[m.category];
   document.getElementById('master-detail-content').innerHTML = `
-    <div class="master-detail-hero${mPhoto ? ' has-photo' : ''}"${mPhoto ? ` style="--photo-url:url('${mPhoto}')"` : ''}>
+    <div class="master-detail-hero">
       <div class="detail-avatar" style="background:${m.bg}">${m.emoji}</div>
       ${m.online ? '<div class="badge-online" style="margin-bottom:8px;">● Онлайн сейчас</div>' : ''}
       <div class="detail-name">${m.name}${planBadge(m.plan)}</div>
@@ -873,10 +841,8 @@ async function openShop(id) {
   ]);
   if (!s) { document.getElementById('shop-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div></div>'; return; }
 
-  const sPhoto = SHOP_CATEGORY_PHOTOS[s.category];
-  currentProductPhoto = sPhoto || null;
   document.getElementById('shop-detail-content').innerHTML = `
-    <div class="shop-detail-hero${sPhoto ? ' has-photo' : ''}"${sPhoto ? ` style="--photo-url:url('${sPhoto}')"` : ''}>
+    <div class="shop-detail-hero">
       <div class="shop-detail-icon">${s.emoji}</div>
       <div class="shop-detail-name">${s.name}${planBadge(s.plan)}</div>
       <div class="shop-detail-desc">${s.description || ''}</div>
@@ -909,11 +875,8 @@ function renderProductCard(p) {
   const inner = qty > 0
     ? `<div class="qty-stepper"><button onclick="changeCartQty(${p.id},${qty - 1})">−</button><span>${qty}</span><button onclick="changeCartQty(${p.id},${qty + 1})">+</button></div>`
     : `<div class="add-cart-btn" onclick="changeCartQty(${p.id},1)">+ В корзину</div>`;
-  const icon = currentProductPhoto
-    ? `<div class="product-photo" style="background-image:url('${currentProductPhoto}')"><span>${p.emoji}</span></div>`
-    : `<div class="product-icon">${p.emoji}</div>`;
   return `<div class="product-card" id="product-card-${p.id}">
-    ${icon}
+    <div class="product-icon">${p.emoji}</div>
     <div class="product-name">${p.name}</div>
     <div class="product-price">${p.price}₽/${p.unit}</div>
     ${inner}
