@@ -41,18 +41,6 @@ def _debug_fsinfo():
     return jsonify(info)
 
 
-@app.route("/api/_debug/cleanup_diagtest", methods=["POST"])
-def _debug_cleanup_diagtest():
-    if request.headers.get("X-Debug-Token") != BOT_TOKEN:
-        return jsonify({"error": "forbidden"}), 403
-    conn = get_db()
-    cur = conn.execute("DELETE FROM requests WHERE user_name='DiagTest'")
-    deleted = cur.rowcount
-    conn.commit()
-    conn.close()
-    return jsonify({"ok": True, "deleted": deleted})
-
-
 
 
 def notify_telegram(chat_id, text):
