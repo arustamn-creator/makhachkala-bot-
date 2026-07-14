@@ -19,26 +19,18 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 
 
-@app.route("/api/_debug/peek_requests", methods=["POST"])
-def _debug_peek_requests():
+@app.route("/api/_debug/cleanup_diagtest", methods=["POST"])
+def _debug_cleanup_diagtest():
     if request.headers.get("X-Debug-Token") != BOT_TOKEN:
         return jsonify({"error": "forbidden"}), 403
     conn = get_db()
-    rows = conn.execute("SELECT * FROM requests ORDER BY id DESC LIMIT 10").fetchall()
-    conn.close()
-    return jsonify([dict(r) for r in rows])
-
-
-@app.route("/api/_debug/cleanup_smoketest2", methods=["POST"])
-def _debug_cleanup_smoketest2():
-    if request.headers.get("X-Debug-Token") != BOT_TOKEN:
-        return jsonify({"error": "forbidden"}), 403
-    conn = get_db()
-    cur = conn.execute("DELETE FROM requests WHERE user_name='SmokeTest' AND user_phone='+70000000002'")
+    cur = conn.execute("DELETE FROM requests WHERE user_name='DiagTest'")
     deleted = cur.rowcount
     conn.commit()
     conn.close()
     return jsonify({"ok": True, "deleted": deleted})
+
+
 
 
 def notify_telegram(chat_id, text):
