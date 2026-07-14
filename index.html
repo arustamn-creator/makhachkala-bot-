@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Всё для дома — Махачкала</title>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0d0a0b;--bg2:#130d0f;--bg3:#1c1318;--card:#18100f;
-  --border:rgba(200,169,81,0.12);--accent:#8B1A2A;--accent2:#C8A951;
-  --accent3:#A82030;--text:#f5f0f0;--muted:#8a7070;--green:#22c55e;
-  --red-glow:rgba(139,26,42,0.28);
+  --bg:#14181A;--bg2:#1B2124;--bg3:#212A2C;--card:#1B2124;
+  --border:rgba(185,190,194,0.16);--accent:#1F8A5F;--accent2:#B9BEC2;
+  --accent3:#1F8A5F;--text:#E8ECEA;--muted:#7C8C88;--green:#22c55e;
+  --red-glow:rgba(31,138,95,0.28);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-serif;min-height:100vh;overflow-x:hidden;}
+html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
 .screen{display:none;flex-direction:column;min-height:100vh;}
 .screen.active{display:flex;}
 
@@ -22,14 +22,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .logo{display:flex;align-items:center;gap:8px;}
 .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 14px var(--red-glow);}
-.logo-text{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:800;line-height:1.15;}
+.logo-text{font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;line-height:1.15;}
 .logo-text span{color:var(--accent);}
 .back-btn{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--accent);cursor:pointer;font-weight:500;}
 .header-actions{display:flex;gap:8px;}
 .icon-btn{width:34px;height:34px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;}
 .icon-btn:active{transform:scale(0.93);}
 .search-bar{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:9px 14px;}
-.search-bar input{background:none;border:none;outline:none;color:var(--text);font-family:'Geologica',sans-serif;font-size:14px;flex:1;caret-color:var(--accent);}
+.search-bar input{background:none;border:none;outline:none;color:var(--text);font-family:'PT Sans',sans-serif;font-size:14px;flex:1;caret-color:var(--accent);}
 .search-bar input::placeholder{color:var(--muted);}
 
 /* TABS */
@@ -40,24 +40,24 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .content{padding-bottom:90px;flex:1;}
 
 /* HERO */
-.hero{margin:0 16px 20px;background:linear-gradient(135deg,#1a0810 0%,#200d14 50%,#0d0508 100%);border-radius:18px;padding:20px;position:relative;overflow:hidden;border:1px solid rgba(139,26,42,0.2);}
-.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(139,26,42,0.4) 0%,transparent 70%);border-radius:50%;}
-.hero::after{content:'';position:absolute;bottom:-30px;left:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(200,169,81,0.2) 0%,transparent 70%);border-radius:50%;}
+.hero{margin:0 16px 20px;background:linear-gradient(135deg,#0F1A16 0%,#141B1D 50%,#0B0F10 100%);border-radius:18px;padding:20px;position:relative;overflow:hidden;border:1px solid rgba(31,138,95,0.2);}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(31,138,95,0.4) 0%,transparent 70%);border-radius:50%;}
+.hero::after{content:'';position:absolute;bottom:-30px;left:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(185,190,194,0.2) 0%,transparent 70%);border-radius:50%;}
 .hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--green);font-weight:500;margin-bottom:10px;}
-.hero h2{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:800;line-height:1.2;margin-bottom:6px;}
+.hero h2{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;line-height:1.2;margin-bottom:6px;}
 .hero h2 span{color:var(--accent);}
 .hero p{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
 .hero-btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;padding:10px 18px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 6px 20px var(--red-glow);}
 .hero-btn:active{transform:scale(0.96);}
 .hero-stats{display:flex;gap:0;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);}
 .hero-stat{flex:1;text-align:center;}
-.hero-stat-n{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:800;color:var(--accent2);}
+.hero-stat-n{font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;color:var(--accent2);}
 .hero-stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
 
 /* SECTION */
 .section{margin-bottom:24px;}
 .section-header{display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-bottom:12px;}
-.section-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;}
+.section-title{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;}
 .section-link{font-size:12px;color:var(--accent);font-weight:500;cursor:pointer;}
 
 /* CAT GRID */
@@ -79,8 +79,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .star{color:#f59e0b;}
 .master-price{margin-top:6px;font-size:11px;color:var(--accent);font-weight:600;}
 .badge-online{display:inline-block;background:rgba(34,197,94,0.12);color:var(--green);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:600;margin-bottom:6px;}
-.badge-pro{display:inline-block;background:rgba(200,169,81,0.15);color:var(--accent2);border:1px solid rgba(200,169,81,0.3);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
-.badge-premium{display:inline-block;background:rgba(139,26,42,0.2);color:var(--accent);border:1px solid rgba(139,26,42,0.4);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
+.badge-pro{display:inline-block;background:rgba(185,190,194,0.15);color:var(--accent2);border:1px solid rgba(185,190,194,0.3);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
+.badge-premium{display:inline-block;background:rgba(31,138,95,0.2);color:var(--accent);border:1px solid rgba(31,138,95,0.4);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:700;margin-left:4px;}
 
 /* MASTERS LIST */
 .masters-list{display:flex;flex-direction:column;gap:10px;padding:0 16px;}
@@ -104,7 +104,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .shop-name{font-size:14px;font-weight:600;margin-bottom:2px;}
 .shop-desc{font-size:11px;color:var(--muted);margin-bottom:6px;}
 .shop-meta{display:flex;gap:10px;align-items:center;}
-.shop-tag{font-size:10px;color:var(--accent2);background:rgba(200,169,81,0.1);border-radius:5px;padding:2px 7px;font-weight:500;}
+.shop-tag{font-size:10px;color:var(--accent2);background:rgba(185,190,194,0.1);border-radius:5px;padding:2px 7px;font-weight:500;}
 .shop-open{font-size:10px;color:var(--green);font-weight:500;}
 .shop-arrow{color:var(--muted);font-size:16px;}
 
@@ -126,38 +126,42 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .promo-scroll{display:flex;gap:10px;padding:0 16px;overflow-x:auto;scrollbar-width:none;}
 .promo-scroll::-webkit-scrollbar{display:none;}
 .promo-card{flex-shrink:0;width:220px;border-radius:16px;padding:16px;position:relative;overflow:hidden;cursor:pointer;}
-.promo-card.red{background:linear-gradient(135deg,#5C1020,#8B1A2A);}
-.promo-card.orange{background:linear-gradient(135deg,#7A5010,#C8A951);}
-.promo-card.dark{background:linear-gradient(135deg,#1a0810,#3d1528);}
-.promo-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;margin-bottom:4px;}
+.promo-card.red{background:linear-gradient(135deg,#0E3D2A,#1F8A5F);}
+.promo-card.orange{background:linear-gradient(135deg,#6B4A12,#C9A24A);}
+.promo-card.dark{background:linear-gradient(135deg,#14181A,#232C2E);}
+.promo-title{font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;margin-bottom:4px;}
 .promo-desc{font-size:12px;opacity:0.85;}
 .promo-emoji{position:absolute;right:12px;top:10px;font-size:32px;opacity:0.35;}
 
 /* MASTER DETAIL */
-.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(139,26,42,0.15);}
+.master-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(31,138,95,0.15);background-size:cover;background-position:center;}
+.master-detail-hero.has-photo{background-image:linear-gradient(180deg,rgba(20,24,26,0.35) 0%,rgba(20,24,26,0.88) 78%),var(--photo-url);}
+.shop-detail-hero.has-photo{background-image:linear-gradient(180deg,rgba(20,24,26,0.35) 0%,rgba(20,24,26,0.9) 82%),var(--photo-url);background-size:cover;background-position:center;}
 .detail-avatar{width:74px;height:74px;border-radius:20px;font-size:38px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
-.detail-name{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;}
+.detail-name{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;}
 .detail-spec{font-size:14px;color:var(--muted);margin-bottom:12px;}
 .detail-stats{display:flex;gap:0;justify-content:center;padding-top:12px;border-top:1px solid var(--border);}
 .detail-stat{flex:1;text-align:center;}
-.detail-stat-n{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;color:var(--accent2);}
+.detail-stat-n{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;color:var(--accent2);}
 .detail-stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
 .detail-section{margin:0 16px 16px;}
 .detail-section-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;font-weight:600;}
 .skills-grid{display:flex;flex-wrap:wrap;gap:8px;}
 .skill-tag{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:500;}
-.call-btn{margin:0 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:14px;padding:15px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Unbounded',sans-serif;box-shadow:0 6px 24px var(--red-glow);}
+.call-btn{margin:0 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:14px;padding:15px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;box-shadow:0 6px 24px var(--red-glow);}
 .call-btn:active{transform:scale(0.97);}
 
 /* SHOP DETAIL */
-.shop-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;border:1px solid rgba(139,26,42,0.12);}
+.shop-detail-hero{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;border:1px solid rgba(31,138,95,0.12);}
 .shop-detail-icon{font-size:48px;margin-bottom:10px;}
-.shop-detail-name{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:800;margin-bottom:4px;}
+.shop-detail-name{font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;margin-bottom:4px;}
 .shop-detail-desc{font-size:13px;color:var(--muted);margin-bottom:12px;}
 .shop-info-row{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:8px;}
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;}
 .product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;transition:all 0.2s;}
 .product-icon{font-size:28px;margin-bottom:8px;}
+.product-photo{width:100%;height:64px;border-radius:9px;background-size:cover;background-position:center;margin-bottom:8px;display:flex;align-items:flex-end;justify-content:flex-end;padding:4px;}
+.product-photo span{font-size:16px;background:rgba(20,24,26,0.55);border-radius:6px;padding:1px 5px;}
 .product-name{font-size:12px;font-weight:600;margin-bottom:3px;}
 .product-price{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;}
 .add-cart-btn{width:100%;padding:8px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:12px;font-weight:600;cursor:pointer;text-align:center;}
@@ -186,7 +190,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 /* PROFILE */
 .profile-card{background:var(--bg3);margin:16px;border-radius:18px;padding:20px;text-align:center;border:1px solid var(--border);}
 .profile-avatar{width:72px;height:72px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:20px;font-size:36px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 6px 20px var(--red-glow);}
-.profile-name{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;margin-bottom:4px;}
+.profile-name{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;margin-bottom:4px;}
 .profile-phone{font-size:13px;color:var(--muted);}
 .profile-menu{margin:0 16px;}
 .menu-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:8px;transition:all 0.2s;}
@@ -200,13 +204,13 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .req-meta{font-size:11px;color:var(--muted);}
 .req-status{display:inline-block;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:6px;}
 .req-status.new{background:rgba(34,197,94,0.12);color:var(--green);}
-.req-status.done{background:rgba(200,169,81,0.12);color:var(--accent2);}
+.req-status.done{background:rgba(185,190,194,0.12);color:var(--accent2);}
 
 /* FILTER */
 .filter-bar{display:flex;gap:8px;padding:0 16px 14px;overflow-x:auto;scrollbar-width:none;background:var(--bg);}
 .filter-bar::-webkit-scrollbar{display:none;}
 .filter-chip{flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--muted);transition:all 0.2s;}
-.filter-chip.active{background:rgba(139,26,42,0.15);border-color:var(--accent);color:var(--accent);}
+.filter-chip.active{background:rgba(31,138,95,0.15);border-color:var(--accent);color:var(--accent);}
 
 /* SEARCH RESULTS */
 .search-results{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,0.5);max-height:60vh;overflow-y:auto;}
@@ -234,13 +238,13 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:flex-end;}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 20px 40px;width:100%;border-top:1px solid rgba(139,26,42,0.2);}
+.modal{background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 20px 40px;width:100%;border-top:1px solid rgba(31,138,95,0.2);}
 .modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px;}
-.modal-title{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:800;margin-bottom:16px;text-align:center;}
-.modal-input{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'Geologica',sans-serif;width:100%;outline:none;margin-bottom:10px;caret-color:var(--accent);}
+.modal-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;margin-bottom:16px;text-align:center;}
+.modal-input{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'PT Sans',sans-serif;width:100%;outline:none;margin-bottom:10px;caret-color:var(--accent);}
 .modal-input::placeholder{color:var(--muted);}
 .modal-textarea{height:80px;resize:none;}
-.modal-submit{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:14px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Unbounded',sans-serif;box-shadow:0 6px 20px var(--red-glow);}
+.modal-submit{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:14px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;box-shadow:0 6px 20px var(--red-glow);}
 .modal-submit:active{transform:scale(0.97);}
 .modal-close{text-align:center;margin-top:14px;color:var(--muted);font-size:14px;cursor:pointer;}
 
@@ -249,7 +253,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 .success-overlay.open{display:flex;}
 .success-box{background:var(--bg2);border-radius:24px;padding:32px 24px;text-align:center;border:1px solid rgba(34,197,94,0.2);margin:20px;}
 .success-icon{font-size:56px;margin-bottom:16px;}
-.success-title{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;}
+.success-title{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;}
 .success-text{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;}
 .success-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;}
 
@@ -312,7 +316,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
         <div class="cat-item" onclick="gotoMasters('Плиточники')"><div class="cat-icon" style="background:rgba(139,92,246,0.12)">🪚</div><div class="cat-label">Плиточники</div></div>
         <div class="cat-item" onclick="gotoMasters('Сварщики')"><div class="cat-icon" style="background:rgba(255,107,53,0.12)">🔥</div><div class="cat-label">Сварщики</div></div>
         <div class="cat-item" onclick="gotoMasters('Мебельщики')"><div class="cat-icon" style="background:rgba(20,184,166,0.12)">🛋️</div><div class="cat-label">Мебельщики</div></div>
-        <div class="cat-item" onclick="gotoMasters('Маляры')"><div class="cat-icon" style="background:rgba(200,169,81,0.12)">🎨</div><div class="cat-label">Маляры</div></div>
+        <div class="cat-item" onclick="gotoMasters('Маляры')"><div class="cat-icon" style="background:rgba(185,190,194,0.12)">🎨</div><div class="cat-label">Маляры</div></div>
         <div class="cat-item" onclick="gotoMasters('Окна/Двери')"><div class="cat-icon" style="background:rgba(34,197,94,0.12)">🪟</div><div class="cat-label">Окна/Двери</div></div>
         <div class="cat-item" onclick="gotoMasters('Кровельщики')"><div class="cat-icon" style="background:rgba(239,68,68,0.12)">🏠</div><div class="cat-label">Кровельщики</div></div>
         <div class="cat-item" onclick="gotoMasters('Каменщики')"><div class="cat-icon" style="background:rgba(180,83,9,0.12)">🧱</div><div class="cat-label">Каменщики</div></div>
@@ -326,6 +330,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
         <div class="cat-item" onclick="gotoMasters('Реставрация')"><div class="cat-icon" style="background:rgba(14,116,144,0.12)">🛁</div><div class="cat-label">Реставрация</div></div>
         <div class="cat-item" onclick="gotoMasters('Замки')"><div class="cat-icon" style="background:rgba(100,116,139,0.12)">🔐</div><div class="cat-label">Замки</div></div>
         <div class="cat-item" onclick="gotoMasters('Сборка IKEA')"><div class="cat-icon" style="background:rgba(255,196,0,0.12)">🪑</div><div class="cat-label">Сборка IKEA</div></div>
+        <div class="cat-item" onclick="gotoMasters('Газовик')"><div class="cat-icon" style="background:rgba(255,107,53,0.12)">🔥</div><div class="cat-label">Газовик</div></div>
       </div>
     </div>
 
@@ -356,7 +361,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мастера</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Мастера</div>
       <div style="width:60px;"></div>
     </div>
     <div class="search-wrap">
@@ -384,6 +389,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
     <div class="filter-chip" onclick="filterMasters('Реставрация',this)">🛁 Реставрация</div>
     <div class="filter-chip" onclick="filterMasters('Замки',this)">🔐 Замки</div>
     <div class="filter-chip" onclick="filterMasters('Сборка IKEA',this)">🪑 IKEA</div>
+    <div class="filter-chip" onclick="filterMasters('Газовик',this)">🔥 Газовик</div>
   </div>
   <div class="content"><div class="masters-list" id="masters-list"><div class="loader"><div class="spinner"></div></div></div></div>
 </div>
@@ -393,7 +399,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Профиль мастера</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Профиль мастера</div>
       <div style="width:60px;"></div>
     </div>
   </div>
@@ -405,7 +411,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Магазины</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Магазины</div>
       <div style="width:60px;"></div>
     </div>
     <div class="search-wrap">
@@ -435,7 +441,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Магазин</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Магазин</div>
       <div style="width:60px;"></div>
     </div>
   </div>
@@ -447,7 +453,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Доставка</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Доставка</div>
       <div style="width:60px;"></div>
     </div>
   </div>
@@ -468,7 +474,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Корзина</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Корзина</div>
       <div style="width:60px;"></div>
     </div>
   </div>
@@ -480,7 +486,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мои заказы</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Мои заказы</div>
       <div style="width:60px;"></div>
     </div>
   </div>
@@ -492,7 +498,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
   <div class="header">
     <div class="header-top">
       <div class="back-btn" onclick="goBack()">‹ Назад</div>
-      <div style="font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Профиль</div>
+      <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Профиль</div>
       <div style="width:60px;"></div>
     </div>
   </div>
@@ -510,10 +516,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
       <div class="menu-item" onclick="openModal()"><div class="menu-icon">🛠️</div><div class="menu-text">Стать мастером</div><div class="menu-arrow">›</div></div>
       <div class="menu-item" id="owner-menu-item" onclick="openOwnerDashboard()"><div class="menu-icon">🔑</div><div class="menu-text">Мои заказы (владелец)</div><div class="menu-arrow">›</div></div>
       <div class="menu-item" onclick="openOwnerClaimModal()"><div class="menu-icon">➕</div><div class="menu-text">Подтвердить магазин/мастера по коду</div><div class="menu-arrow">›</div></div>
+      <div class="menu-item" onclick="openInBrowser()"><div class="menu-icon">🌐</div><div class="menu-text">Открыть в браузере</div><div class="menu-arrow">›</div></div>
       <div class="menu-item"><div class="menu-icon">📞</div><div class="menu-text">Поддержка</div><div class="menu-arrow">›</div></div>
     </div>
     <div id="my-requests-section" style="display:none;margin-top:8px;">
-      <div style="padding:0 16px 10px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;">Мои заявки</div>
+      <div style="padding:0 16px 10px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;">Мои заявки</div>
       <div class="profile-requests" id="my-requests-list"><div class="loader"><div class="spinner"></div></div></div>
     </div>
   </div>
@@ -566,6 +573,32 @@ html,body{background:var(--bg);color:var(--text);font-family:'Geologica',sans-se
 // ── Config ──────────────────────────────────────────────────────────────────
 const API = '';  // same origin; change to 'https://your-backend.railway.app' if separated
 
+// Real photos, one per category (Wikimedia Commons / Pexels, freely licensed,
+// no visible third-party brand/logo in frame). Categories not listed here
+// intentionally show no photo — no honest match was found for them.
+const MASTER_CATEGORY_PHOTOS = {
+  'Отделочники': 'https://commons.wikimedia.org/wiki/Special:FilePath/Plasterer_at_work_on_a_wall_arp.jpg?width=800',
+  'Сварщики': 'https://commons.wikimedia.org/wiki/Special:FilePath/A_welder_at_work_creating_piece_joining_two_metals.jpg?width=800',
+  'Маляры': 'https://commons.wikimedia.org/wiki/Special:FilePath/203_365_Painting_the_basement._(35705667550).jpg?width=800',
+  'Каменщики': 'https://commons.wikimedia.org/wiki/Special:FilePath/Mason_at_work.jpg?width=800',
+  'Плотники': 'https://commons.wikimedia.org/wiki/Special:FilePath/Carpenter_at_work_1.jpg?width=800',
+  'Ландшафт': 'https://commons.wikimedia.org/wiki/Special:FilePath/Man_trimming_the_lawn_on_Almat_farm.jpg?width=800',
+  'Камень': "https://commons.wikimedia.org/wiki/Special:FilePath/Taglio_e_profilatura_di_un'architrave.jpg?width=800",
+  'Видеонаблюдение': 'https://commons.wikimedia.org/wiki/Special:FilePath/CCTV_camera.JPG?width=800',
+  'Сборка IKEA': 'https://images.pexels.com/photos/5805487/pexels-photo-5805487.jpeg?w=800',
+  'Реставрация': "https://commons.wikimedia.org/wiki/Special:FilePath/06_Restoration_of_gilded_mirror_in_Muzeum_Gornoslaskie,_Bytom,_Poland_-_furniture_restorer_working.jpg?width=800",
+};
+const SHOP_CATEGORY_PHOTOS = {
+  'Стройматериалы': 'https://commons.wikimedia.org/wiki/Special:FilePath/Bricks_waiting_to_be_used.jpg?width=800',
+  'Плитка': 'https://commons.wikimedia.org/wiki/Special:FilePath/Ceramic_tiles_01.jpg?width=800',
+  'Электрика': 'https://commons.wikimedia.org/wiki/Special:FilePath/Switches-electrical.agr.jpg?width=800',
+  'Сантехника': 'https://commons.wikimedia.org/wiki/Special:FilePath/Copper_water_pipes.jpg?width=800',
+  'Дерево': 'https://images.pexels.com/photos/12278569/pexels-photo-12278569.jpeg?w=800',
+  'Природный камень': 'https://images.pexels.com/photos/30112371/pexels-photo-30112371.jpeg?w=800',
+  'Окна и двери': 'https://images.pexels.com/photos/5900792/pexels-photo-5900792.jpeg?w=800',
+  'Металл': 'https://commons.wikimedia.org/wiki/Special:FilePath/A_bunch_of_rebar.jpg?width=800',
+};
+
 // ── Telegram WebApp ─────────────────────────────────────────────────────────
 const tg = window.Telegram && window.Telegram.WebApp;
 let tgUser = null;
@@ -582,6 +615,7 @@ let currentMasterFilter = 'Все';
 let currentShopFilter = 'Все';
 let currentMasterId = null;
 let currentShopId = null;
+let currentProductPhoto = null;
 let modalMasterId = null;
 let modalShopId = null;
 let modalType = 'master';
@@ -747,8 +781,9 @@ async function openMaster(id) {
   const m = await apiFetch('/api/masters/' + id);
   if (!m) { document.getElementById('master-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div class="empty-state-text">Не удалось загрузить</div></div>'; return; }
 
+  const mPhoto = MASTER_CATEGORY_PHOTOS[m.category];
   document.getElementById('master-detail-content').innerHTML = `
-    <div class="master-detail-hero">
+    <div class="master-detail-hero${mPhoto ? ' has-photo' : ''}"${mPhoto ? ` style="--photo-url:url('${mPhoto}')"` : ''}>
       <div class="detail-avatar" style="background:${m.bg}">${m.emoji}</div>
       ${m.online ? '<div class="badge-online" style="margin-bottom:8px;">● Онлайн сейчас</div>' : ''}
       <div class="detail-name">${m.name}${planBadge(m.plan)}</div>
@@ -838,8 +873,10 @@ async function openShop(id) {
   ]);
   if (!s) { document.getElementById('shop-detail-content').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div></div>'; return; }
 
+  const sPhoto = SHOP_CATEGORY_PHOTOS[s.category];
+  currentProductPhoto = sPhoto || null;
   document.getElementById('shop-detail-content').innerHTML = `
-    <div class="shop-detail-hero">
+    <div class="shop-detail-hero${sPhoto ? ' has-photo' : ''}"${sPhoto ? ` style="--photo-url:url('${sPhoto}')"` : ''}>
       <div class="shop-detail-icon">${s.emoji}</div>
       <div class="shop-detail-name">${s.name}${planBadge(s.plan)}</div>
       <div class="shop-detail-desc">${s.description || ''}</div>
@@ -872,8 +909,11 @@ function renderProductCard(p) {
   const inner = qty > 0
     ? `<div class="qty-stepper"><button onclick="changeCartQty(${p.id},${qty - 1})">−</button><span>${qty}</span><button onclick="changeCartQty(${p.id},${qty + 1})">+</button></div>`
     : `<div class="add-cart-btn" onclick="changeCartQty(${p.id},1)">+ В корзину</div>`;
+  const icon = currentProductPhoto
+    ? `<div class="product-photo" style="background-image:url('${currentProductPhoto}')"><span>${p.emoji}</span></div>`
+    : `<div class="product-icon">${p.emoji}</div>`;
   return `<div class="product-card" id="product-card-${p.id}">
-    <div class="product-icon">${p.emoji}</div>
+    ${icon}
     <div class="product-name">${p.name}</div>
     <div class="product-price">${p.price}₽/${p.unit}</div>
     ${inner}
@@ -983,6 +1023,16 @@ async function checkoutCart() {
   goBack();
   setTimeout(() => document.getElementById('success-overlay').classList.add('open'), 200);
   if (tg) tg.HapticFeedback && tg.HapticFeedback.notificationOccurred('success');
+}
+
+// ── Open in browser ───────────────────────────────────────────────────────────
+function openInBrowser() {
+  const url = window.location.href;
+  if (tg && tg.openLink) {
+    tg.openLink(url);
+  } else {
+    window.open(url, '_blank');
+  }
 }
 
 // ── Owner claim ──────────────────────────────────────────────────────────────

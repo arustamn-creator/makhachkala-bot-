@@ -3,7 +3,7 @@ import json
 import requests
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from database import init_db, seed_db, seed_products, seed_owner_codes, get_db
+from database import init_db, seed_db, seed_products, seed_owner_codes, seed_more_products, get_db
 
 app = Flask(__name__, static_folder=".")
 CORS(app)
@@ -12,6 +12,7 @@ init_db()
 seed_db()
 seed_products()
 seed_owner_codes()
+seed_more_products()
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
