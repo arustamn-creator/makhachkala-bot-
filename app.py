@@ -17,20 +17,6 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 
 
-@app.route("/api/_debug/cleanup_smoketest", methods=["POST"])
-def _debug_cleanup_smoketest():
-    if request.headers.get("X-Debug-Token") != BOT_TOKEN:
-        return jsonify({"error": "forbidden"}), 403
-    conn = get_db()
-    conn.execute("DELETE FROM orders WHERE user_key='smoketest'")
-    conn.execute("DELETE FROM cart_items WHERE user_key='smoketest'")
-    conn.execute("UPDATE shops SET owner_tg_id=NULL WHERE owner_tg_id=123456")
-    conn.execute("UPDATE masters SET owner_tg_id=NULL WHERE owner_tg_id=123456")
-    conn.commit()
-    conn.close()
-    return jsonify({"ok": True})
-
-
 def notify_telegram(chat_id, text):
     if not BOT_TOKEN or not chat_id:
         return False
