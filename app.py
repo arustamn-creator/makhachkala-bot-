@@ -19,19 +19,6 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 
 
-@app.route("/api/_debug/cleanup_persist_tests", methods=["POST"])
-def _debug_cleanup_persist_tests():
-    if request.headers.get("X-Debug-Token") != BOT_TOKEN:
-        return jsonify({"error": "forbidden"}), 403
-    conn = get_db()
-    cur = conn.execute(
-        "DELETE FROM cart_items WHERE user_key IN ('persisttest','persisttest2','gitpushtest')"
-    )
-    deleted = cur.rowcount
-    conn.commit()
-    conn.close()
-    return jsonify({"ok": True, "deleted": deleted})
-
 
 
 
