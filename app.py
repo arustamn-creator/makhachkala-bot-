@@ -19,6 +19,16 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 
 
+@app.route("/api/_debug/peek_requests", methods=["POST"])
+def _debug_peek_requests():
+    if request.headers.get("X-Debug-Token") != BOT_TOKEN:
+        return jsonify({"error": "forbidden"}), 403
+    conn = get_db()
+    rows = conn.execute("SELECT * FROM requests ORDER BY id DESC LIMIT 10").fetchall()
+    conn.close()
+    return jsonify([dict(r) for r in rows])
+
+
 @app.route("/api/_debug/cleanup_smoketest2", methods=["POST"])
 def _debug_cleanup_smoketest2():
     if request.headers.get("X-Debug-Token") != BOT_TOKEN:
