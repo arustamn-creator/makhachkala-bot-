@@ -19,6 +19,28 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID", "")
 
 
+@app.route("/api/_debug/fsinfo", methods=["POST"])
+def _debug_fsinfo():
+    if request.headers.get("X-Debug-Token") != BOT_TOKEN:
+        return jsonify({"error": "forbidden"}), 403
+    import database as db_module
+    info = {
+        "DB_PATH_env": os.environ.get("DB_PATH"),
+        "db_module.DB_PATH": db_module.DB_PATH,
+        "abspath": os.path.abspath(db_module.DB_PATH),
+        "exists": os.path.exists(db_module.DB_PATH),
+    }
+    if info["exists"]:
+        info["size_bytes"] = os.path.getsize(db_module.DB_PATH)
+        info["mtime"] = os.path.getmtime(db_module.DB_PATH)
+    data_dir = "/data"
+    if os.path.isdir(data_dir):
+        info["data_dir_listing"] = os.listdir(data_dir)
+    else:
+        info["data_dir_exists"] = False
+    return jsonify(info)
+
+
 @app.route("/api/_debug/cleanup_diagtest", methods=["POST"])
 def _debug_cleanup_diagtest():
     if request.headers.get("X-Debug-Token") != BOT_TOKEN:
