@@ -179,6 +179,40 @@ def get_requests():
     return jsonify([dict(r) for r in rows])
 
 
+@app.route("/api/shops/<int:shop_id>/question", methods=["POST"])
+def shop_question(shop_id):
+    data = request.json or {}
+    user_tg_id = data.get("user_tg_id")
+    user_name = (data.get("user_name") or "").strip()
+    user_phone = (data.get("user_phone") or "").strip()
+    question = (data.get("question") or "").strip()
+
+    if not user_name or not user_phone or not question:
+        return jsonify({"error": "user_name, user_phone and question required"}), 400
+
+    conn = get_db()
+    shop = conn.execute("SELECT name, owner_tg_id FROM shops WHERE id=?", (shop_id,)).fetchone()
+    if not shop:
+        conn.close()
+        return jsonify({"error": "Shop not found"}), 404
+
+    conn.execute("""INSERT INTO requests
+        (user_tg_id, user_name, user_phone, description, shop_id, request_type)
+        VALUES (?,?,?,?,?,?)""",
+        (user_tg_id, user_name, user_phone, question, shop_id, "shop_question"))
+    conn.commit()
+
+    text = (
+        f"❓ Вопрос о товаре — {shop['name']}\n\n"
+        f"{question}\n\n"
+        f"От: {user_name}, {user_phone}"
+    )
+    target_chat = shop["owner_tg_id"] or ADMIN_CHAT_ID
+    notified = notify_telegram(target_chat, text)
+    conn.close()
+    return jsonify({"ok": True, "notified": notified}), 201
+
+
 # ── Stats ──────────────────────────────────────────────────────────────────
 
 @app.route("/api/stats")

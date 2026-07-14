@@ -120,6 +120,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'PT Sans',sans-seri
 .delivery-features{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
 .feat-tag{font-size:10px;color:var(--muted);background:var(--bg3);border-radius:6px;padding:3px 8px;}
 .order-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px var(--red-glow);}
+.ask-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:600;cursor:pointer;}
+.ask-btn:active{transform:scale(0.98);border-color:var(--accent);}
 .order-btn:active{transform:scale(0.97);}
 
 /* PROMO */
@@ -847,13 +849,14 @@ async function openShop(id) {
       <div class="shop-detail-name">${s.name}${planBadge(s.plan)}</div>
       <div class="shop-detail-desc">${s.description || ''}</div>
       ${s.address ? `<div class="shop-info-row"><span>📍</span>${s.address}</div>` : ''}
-      ${s.phone ? `<div class="shop-info-row"><span>📞</span>${s.phone}</div>` : ''}
+      ${s.phone ? `<div class="shop-info-row"><span>📞</span><a href="tel:${s.phone.replace(/[^\d+]/g,'')}" style="color:inherit;text-decoration:underline;">${s.phone}</a></div>` : ''}
       ${s.hours ? `<div class="shop-info-row"><span>🕐</span>${s.hours}</div>` : ''}
     </div>
     <div class="section"><div class="section-header"><div class="section-title">Товары и цены</div></div>
     <div class="products-grid" id="shop-products-grid">${(products||[]).map(renderProductCard).join('')}</div></div>
-    <div style="padding:0 16px 24px;">
+    <div style="padding:0 16px 24px;display:flex;flex-direction:column;gap:10px;">
       <div class="order-btn" onclick="openDeliveryModal('${s.name.replace(/'/g,"\\'")}')">🚚 Заказать доставку из магазина</div>
+      <div class="ask-btn" onclick="openAskShopModal(${s.id},'${s.name.replace(/'/g,"\\'")}')">❓ Спросить о товаре</div>
     </div>`;
 }
 
@@ -1153,6 +1156,7 @@ function prefillModalUser() {
 function openModal() {
   modalMasterId = null; modalShopId = null; modalType = 'general';
   document.getElementById('modal-title').textContent = 'Оставить заявку';
+  document.getElementById('modal-desc').placeholder = 'Опишите задачу подробнее...';
   document.getElementById('modal-overlay').classList.add('open');
   prefillModalUser();
 }
@@ -1160,6 +1164,7 @@ function openModal() {
 function openMasterModal(masterId, name) {
   modalMasterId = masterId; modalShopId = null; modalType = 'master';
   document.getElementById('modal-title').textContent = 'Вызвать: ' + name;
+  document.getElementById('modal-desc').placeholder = 'Опишите задачу подробнее...';
   document.getElementById('modal-overlay').classList.add('open');
   prefillModalUser();
 }
@@ -1167,6 +1172,15 @@ function openMasterModal(masterId, name) {
 function openDeliveryModal(type) {
   modalMasterId = null; modalShopId = currentShopId; modalType = 'delivery';
   document.getElementById('modal-title').textContent = 'Заказать: ' + type;
+  document.getElementById('modal-desc').placeholder = 'Опишите задачу подробнее...';
+  document.getElementById('modal-overlay').classList.add('open');
+  prefillModalUser();
+}
+
+function openAskShopModal(shopId, shopName) {
+  modalMasterId = null; modalShopId = shopId; modalType = 'shop_question';
+  document.getElementById('modal-title').textContent = 'Спросить: ' + shopName;
+  document.getElementById('modal-desc').placeholder = 'Какой товар интересует?';
   document.getElementById('modal-overlay').classList.add('open');
   prefillModalUser();
 }
@@ -1186,18 +1200,34 @@ async function submitModal() {
     alert('Укажите имя и телефон');
     return;
   }
+  if (modalType === 'shop_question' && !desc) {
+    alert('Опишите, какой товар интересует');
+    return;
+  }
 
-  const body = {
-    user_tg_id: tgUser ? tgUser.id : null,
-    user_name: name,
-    user_phone: phone,
-    description: desc,
-    master_id: modalMasterId,
-    shop_id: modalShopId,
-    request_type: modalType
-  };
-
-  await apiPost('/api/requests', body);
+  if (modalType === 'shop_question') {
+    const r = await apiPost('/api/shops/' + modalShopId + '/question', {
+      user_tg_id: tgUser ? tgUser.id : null,
+      user_name: name,
+      user_phone: phone,
+      question: desc,
+    });
+    if (!r || r.error) {
+      alert(r && r.error ? r.error : 'Не удалось отправить вопрос');
+      return;
+    }
+  } else {
+    const body = {
+      user_tg_id: tgUser ? tgUser.id : null,
+      user_name: name,
+      user_phone: phone,
+      description: desc,
+      master_id: modalMasterId,
+      shop_id: modalShopId,
+      request_type: modalType
+    };
+    await apiPost('/api/requests', body);
+  }
   document.getElementById('modal-overlay').classList.remove('open');
   document.getElementById('modal-name').value = '';
   document.getElementById('modal-phone').value = '';
